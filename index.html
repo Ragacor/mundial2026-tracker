@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mundial 2026 Tracker</title>
+  <meta name="description" content="App de seguimiento del Mundial de Fútbol 2026: partidos diarios, horarios de España, grupos, resultados, goleadores y cruces." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">FIFA World Cup 2026</p>
+      <h1>Mundial 2026 Tracker</h1>
+      <p class="subtitle">Calendario diario en horario español, clasificaciones, resultados, goleadores y cruces.</p>
+    </div>
+    <div class="status-card" id="sourceStatus">
+      <span class="dot"></span>
+      <span>Cargando datos…</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <label for="datePicker">Día en España</label>
+        <input type="date" id="datePicker" />
+        <div class="quick-actions">
+          <button id="prevDay" type="button">← Día anterior</button>
+          <button id="todayBtn" type="button">Hoy</button>
+          <button id="nextDay" type="button">Día siguiente →</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <label for="teamSearch">Buscar equipo o sede</label>
+        <input id="teamSearch" type="search" placeholder="España, México, Dallas…" />
+      </section>
+
+      <section class="panel">
+        <label for="sourceSelect">Fuente de datos</label>
+        <select id="sourceSelect">
+          <option value="openfootball">OpenFootball JSON — sin clave</option>
+          <option value="manual">JSON manual / local</option>
+        </select>
+        <details>
+          <summary>Cargar JSON manual</summary>
+          <p class="small">Pega un JSON compatible o selecciona un archivo. Útil si actualizas los datos a mano o usas otra API.</p>
+          <textarea id="jsonPaste" placeholder='{"name":"World Cup 2026","matches":[...]}'></textarea>
+          <div class="quick-actions">
+            <button id="loadPastedJson" type="button">Cargar pegado</button>
+            <label class="file-btn">Archivo JSON<input id="jsonFile" type="file" accept="application/json,.json" /></label>
+          </div>
+        </details>
+      </section>
+
+      <section class="panel legend">
+        <h2>Leyenda</h2>
+        <p><strong>FT</strong> resultado final.</p>
+        <p><strong>CEST/CET</strong> hora local española.</p>
+        <p><strong>3º</strong> tabla provisional de terceros.</p>
+      </section>
+    </aside>
+
+    <section class="content">
+      <nav class="tabs" aria-label="Secciones">
+        <button class="tab active" data-tab="daily" type="button">Partidos del día</button>
+        <button class="tab" data-tab="groups" type="button">Grupos</button>
+        <button class="tab" data-tab="results" type="button">Resultados</button>
+        <button class="tab" data-tab="scorers" type="button">Goleadores</button>
+        <button class="tab" data-tab="knockout" type="button">Cruces</button>
+      </nav>
+
+      <section id="daily" class="tab-panel active">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Agenda</p>
+            <h2 id="dailyTitle">Partidos del día</h2>
+          </div>
+          <span class="pill" id="dailyCount">0 partidos</span>
+        </div>
+        <div id="dailyMatches" class="cards"></div>
+      </section>
+
+      <section id="groups" class="tab-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Fase de grupos</p>
+            <h2>Clasificaciones</h2>
+          </div>
+          <span class="pill">Top 2 + 8 mejores terceros</span>
+        </div>
+        <div id="groupTables" class="group-grid"></div>
+        <div class="section-title mt">
+          <div>
+            <p class="eyebrow">Provisional</p>
+            <h2>Mejores terceros</h2>
+          </div>
+        </div>
+        <div id="thirdsTable" class="table-wrap"></div>
+      </section>
+
+      <section id="results" class="tab-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Jornadas</p>
+            <h2>Resultados por día</h2>
+          </div>
+        </div>
+        <div id="resultsByDay" class="timeline"></div>
+      </section>
+
+      <section id="scorers" class="tab-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Estadísticas</p>
+            <h2>Goleadores</h2>
+          </div>
+          <span class="pill" id="scorersCount">0 jugadores</span>
+        </div>
+        <div id="scorersTable" class="table-wrap"></div>
+      </section>
+
+      <section id="knockout" class="tab-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Eliminatorias</p>
+            <h2>Cruces y bracket</h2>
+          </div>
+        </div>
+        <div id="knockoutRounds" class="knockout-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Datos por defecto: OpenFootball worldcup.json. La app convierte automáticamente a horario de España. Para datos live minuto a minuto, usa una API deportiva con eventos de partido.</p>
+  </footer>
+
+  <template id="emptyStateTemplate">
+    <div class="empty">
+      <h3>No hay datos para mostrar</h3>
+      <p>Prueba otro día, limpia el filtro de búsqueda o carga un JSON actualizado.</p>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
