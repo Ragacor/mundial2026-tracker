@@ -25,6 +25,7 @@ const els = {
   panels: document.querySelectorAll('.tab-panel'),
   dailyTitle: document.getElementById('dailyTitle'),
   dailyCount: document.getElementById('dailyCount'),
+  dayStatus: document.getElementById('dayStatus'),
   dailyMatches: document.getElementById('dailyMatches'),
   groupTables: document.getElementById('groupTables'),
   thirdsTable: document.getElementById('thirdsTable'),
@@ -178,8 +179,11 @@ function matchCard(match) {
 function renderDaily() {
   const date = state.selectedDate || todayMadridISO();
   const matches = filteredMatches().filter(m => m._madridDate === date);
+  const finished = matches.filter(m => m._hasScore).length;
+  const pending = matches.length - finished;
   els.dailyTitle.textContent = `Partidos del ${displayDateEs(date)}`;
   els.dailyCount.textContent = `${matches.length} partido${matches.length === 1 ? '' : 's'}`;
+  if (els.dayStatus) els.dayStatus.textContent = `${finished} finalizado${finished === 1 ? '' : 's'} · ${pending} pendiente${pending === 1 ? '' : 's'}`;
   els.dailyMatches.innerHTML = matches.length ? matches.map(matchCard).join('') : emptyState();
 }
 
