@@ -1,6 +1,15 @@
-# Mundial 2026 Tracker — V1.1
+# Mundial 2026 Tracker — V1.1.2
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
+
+
+## Cambios V1.1.2
+
+- Selector de fecha más compacto en móvil.
+- Eliminado el texto explicativo redundante bajo las pestañas.
+- Pestañas más compactas.
+- Estado de partido pendiente mostrado como “Próximo”.
+- Ajustes finos de altura para que los partidos queden más arriba.
 
 ## Cambios V1.1.1
 

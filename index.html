@@ -33,7 +33,7 @@
       <div class="day-bar" aria-label="Selector de día">
         <button id="prevDay" type="button" aria-label="Día anterior">←</button>
         <label class="date-inline" for="datePicker">
-          <span>Día</span>
+          <span class="date-label-text">Día</span>
           <input type="date" id="datePicker" />
         </label>
         <button id="nextDay" type="button" aria-label="Día siguiente">→</button>
@@ -62,9 +62,7 @@
       </nav>
 
       <section class="content">
-        <section id="daily" class="tab-panel active compact-note">
-          <p>Arriba tienes los partidos del día seleccionado. Cambia de fecha o usa las pestañas para ver el resto de la competición.</p>
-        </section>
+        <section id="daily" class="tab-panel active compact-note" aria-label="Resumen del día"></section>
 
         <section id="groups" class="tab-panel">
           <div class="section-title">

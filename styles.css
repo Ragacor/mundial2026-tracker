@@ -305,3 +305,160 @@ tr.third td:first-child::before { content: "●"; color: var(--accent); margin-r
   .tools-panel { width: 100%; }
   .footer { padding: 0 12px 24px; }
 }
+
+
+/* V1.1.2 — Mobile polish: compact controls and cleaner first screen */
+.score {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  gap: 4px;
+}
+
+.score span {
+  font-size: 0.62rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(8, 122, 61, 0.78);
+}
+
+.score.pending {
+  min-width: 84px;
+  color: var(--green);
+  background: rgba(12,31,52,0.055);
+}
+
+.score.pending span {
+  color: var(--muted);
+}
+
+#daily.compact-note {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  .app-header {
+    padding-top: 12px;
+    padding-bottom: 6px;
+  }
+
+  .match-hub {
+    overflow: hidden;
+  }
+
+  .day-bar {
+    grid-template-columns: 40px minmax(0, 1fr) 40px auto;
+    gap: 7px;
+    padding: 9px;
+  }
+
+  .day-bar button,
+  .today-chip {
+    min-height: 40px;
+  }
+
+  .today-chip {
+    grid-column: auto;
+    padding: 0 14px;
+    font-size: 0.92rem;
+  }
+
+  .date-inline {
+    grid-template-columns: 1fr;
+    min-height: 40px;
+    padding: 0 10px;
+  }
+
+  .date-inline span {
+    display: none;
+  }
+
+  .date-inline input {
+    font-size: 0.95rem;
+  }
+
+  .today-summary {
+    padding: 11px 14px 0;
+  }
+
+  .today-summary h2 {
+    font-size: 1.38rem;
+    line-height: 1.12;
+  }
+
+  .summary-pills {
+    margin-top: 8px;
+  }
+
+  .pill {
+    padding: 7px 10px;
+    font-size: 0.78rem;
+  }
+
+  .priority-cards {
+    padding-top: 6px;
+    padding-bottom: 12px;
+  }
+
+  .match-card {
+    padding: 13px;
+    border-radius: 20px;
+  }
+
+  .time {
+    font-size: 1.42rem;
+  }
+
+  .score {
+    min-width: 78px;
+    padding: 8px 10px;
+    font-size: 1.24rem;
+    border-radius: 16px;
+  }
+
+  .score.pending {
+    min-width: 78px;
+  }
+
+  .score span {
+    font-size: 0.56rem;
+  }
+
+  .tabs {
+    padding: 6px 8px;
+  }
+
+  .tab {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  .tab-panel {
+    padding: 0;
+  }
+
+  #daily.compact-note {
+    display: none;
+  }
+
+  .tools-panel {
+    gap: 10px;
+  }
+
+  .panel {
+    padding: 13px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .day-bar {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+
+  .today-chip {
+    grid-column: 1 / -1;
+  }
+}

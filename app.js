@@ -193,8 +193,15 @@ function filteredMatches(matches = state.matches) {
 }
 
 function scoreText(match) {
-  if (!match._hasScore) return '—';
+  if (!match._hasScore) return 'Próximo';
   return `${match.score.ft[0]} - ${match.score.ft[1]}`;
+}
+
+function resultBadge(match) {
+  if (match._hasScore) {
+    return `<div class="score">${scoreText(match)}<span>Finalizado</span></div>`;
+  }
+  return `<div class="score pending">${escapeHtml(match._madridTime || '--:--')}<span>Próximo</span></div>`;
 }
 
 function goalsText(match) {
@@ -208,7 +215,6 @@ function goalsText(match) {
 }
 
 function matchCard(match) {
-  const resultClass = match._hasScore ? 'score' : 'score pending';
   return `<article class="match-card">
     <div>
       <div class="time">${escapeHtml(match._madridTime || '--:--')}</div>
@@ -224,7 +230,7 @@ function matchCard(match) {
       </div>
       ${goalsText(match)}
     </div>
-    <div class="${resultClass}">${scoreText(match)}</div>
+    ${resultBadge(match)}
   </article>`;
 }
 
