@@ -2,6 +2,11 @@
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
+## Cambios V1.1.1
+
+- Banderas junto a las selecciones en partidos, grupos, resultados, goleadores y cruces.
+- Icono visual de copa en la cabecera y favicon de la app.
+
 ## Cambios V1.1
 
 - Interfaz mobile-first.

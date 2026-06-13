@@ -10,6 +10,58 @@ const state = {
   activeTab: 'daily'
 };
 
+
+const TEAM_FLAG_MAP = {
+  'argentina': 'AR', 'australia': 'AU', 'austria': 'AT', 'belgium': 'BE', 'bolivia': 'BO', 'brazil': 'BR',
+  'cameroun': 'CM', 'cameroon': 'CM', 'canada': 'CA', 'chile': 'CL', 'china': 'CN', 'colombia': 'CO',
+  'costa rica': 'CR', 'croatia': 'HR', 'czech republic': 'CZ', 'czechia': 'CZ', 'denmark': 'DK',
+  'ecuador': 'EC', 'egypt': 'EG', 'england': 'GB-ENG', 'spain': 'ES', 'españa': 'ES', 'france': 'FR',
+  'germany': 'DE', 'ghana': 'GH', 'greece': 'GR', 'honduras': 'HN', 'hungary': 'HU', 'india': 'IN',
+  'iran': 'IR', 'ir iran': 'IR', 'iraq': 'IQ', 'ireland': 'IE', 'israel': 'IL', 'italy': 'IT',
+  'ivory coast': 'CI', "cote d'ivoire": 'CI', 'japan': 'JP', 'korea republic': 'KR', 'south korea': 'KR',
+  'mexico': 'MX', 'morocco': 'MA', 'netherlands': 'NL', 'new zealand': 'NZ', 'nigeria': 'NG',
+  'north korea': 'KP', 'norway': 'NO', 'paraguay': 'PY', 'peru': 'PE', 'poland': 'PL', 'portugal': 'PT',
+  'qatar': 'QA', 'romania': 'RO', 'saudi arabia': 'SA', 'scotland': 'GB-SCT', 'senegal': 'SN',
+  'serbia': 'RS', 'slovakia': 'SK', 'slovenia': 'SI', 'south africa': 'ZA', 'sweden': 'SE',
+  'switzerland': 'CH', 'tunisia': 'TN', 'turkey': 'TR', 'türkiye': 'TR', 'ukraine': 'UA',
+  'united states': 'US', 'usa': 'US', 'uruguay': 'UY', 'venezuela': 'VE', 'wales': 'GB-WLS',
+  'algeria': 'DZ', 'angola': 'AO', 'bosnia and herzegovina': 'BA', 'bosnia-herzegovina': 'BA',
+  'burkina faso': 'BF', 'cape verde': 'CV', 'dr congo': 'CD', 'congo dr': 'CD', 'el salvador': 'SV',
+  'finland': 'FI', 'georgia': 'GE', 'guatemala': 'GT', 'iceland': 'IS', 'jamaica': 'JM', 'jordan': 'JO',
+  'mali': 'ML', 'oman': 'OM', 'panama': 'PA', 'republic of ireland': 'IE', 'russia': 'RU', 'syria': 'SY',
+  'trinidad and tobago': 'TT', 'uae': 'AE', 'united arab emirates': 'AE', 'uzbekistan': 'UZ'
+};
+
+function toRegionalIndicatorFlag(code) {
+  if (!code) return '🏳️';
+  if (code === 'GB-ENG' || code === 'GB-SCT' || code === 'GB-WLS') return '🏴';
+  if (code.length !== 2) return '🏳️';
+  return code.toUpperCase().replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt(0)));
+}
+
+function teamCode(teamName) {
+  const normalized = String(teamName || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, 'and')
+    .replace(/\./g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return TEAM_FLAG_MAP[normalized] || null;
+}
+
+function teamFlag(teamName) {
+  if (!teamName || /por definir|tbd|winner|runner-up/i.test(String(teamName))) return '🏳️';
+  return toRegionalIndicatorFlag(teamCode(teamName));
+}
+
+function teamLabel(teamName) {
+  const name = escapeHtml(teamName || 'Por definir');
+  const flag = teamFlag(teamName);
+  return `<span class="team-label"><span class="flag" aria-hidden="true">${flag}</span><span>${name}</span></span>`;
+}
+
 const els = {
   sourceStatus: document.getElementById('sourceStatus'),
   sourceSelect: document.getElementById('sourceSelect'),
@@ -150,8 +202,8 @@ function goalsText(match) {
   const g2 = Array.isArray(match.goals2) ? match.goals2 : [];
   if (!g1.length && !g2.length) return '';
   const format = goal => `${escapeHtml(goal.name || 'Gol')} ${goal.minute ? `${goal.minute}'` : ''}${goal.penalty ? ' (p.)' : ''}`;
-  const part1 = g1.length ? `<strong>${escapeHtml(match.team1)}:</strong> ${g1.map(format).join(', ')}` : '';
-  const part2 = g2.length ? `<strong>${escapeHtml(match.team2)}:</strong> ${g2.map(format).join(', ')}` : '';
+  const part1 = g1.length ? `<strong>${teamLabel(match.team1)}:</strong> ${g1.map(format).join(', ')}` : '';
+  const part2 = g2.length ? `<strong>${teamLabel(match.team2)}:</strong> ${g2.map(format).join(', ')}` : '';
   return `<div class="goals">${[part1, part2].filter(Boolean).join('<br>')}</div>`;
 }
 
@@ -163,7 +215,7 @@ function matchCard(match) {
       <span class="tz">${escapeHtml(match._madridTz || 'España')}</span>
     </div>
     <div>
-      <div class="teams">${escapeHtml(match.team1 || 'Por definir')} <span class="muted">vs</span> ${escapeHtml(match.team2 || 'Por definir')}</div>
+      <div class="teams">${teamLabel(match.team1)} <span class="muted">vs</span> ${teamLabel(match.team2)}</div>
       <div class="meta">
         <span>${escapeHtml(match.round || '')}</span>
         ${match.group ? `<span>${escapeHtml(match.group)}</span>` : ''}
@@ -228,7 +280,7 @@ function sortRows(a, b) {
 function standingsTable(rows, markQualifiers = true) {
   return `<table>
     <thead><tr><th>Equipo</th><th class="num">PJ</th><th class="num">G</th><th class="num">E</th><th class="num">P</th><th class="num">GF</th><th class="num">GC</th><th class="num">DG</th><th class="num">Pts</th></tr></thead>
-    <tbody>${rows.map((r, i) => `<tr class="${markQualifiers && i < 2 ? 'qualify' : markQualifiers && i === 2 ? 'third' : ''}"><td>${escapeHtml(r.team)}</td><td class="num">${r.pj}</td><td class="num">${r.g}</td><td class="num">${r.e}</td><td class="num">${r.p}</td><td class="num">${r.gf}</td><td class="num">${r.gc}</td><td class="num">${r.dg}</td><td class="num"><strong>${r.pts}</strong></td></tr>`).join('')}</tbody>
+    <tbody>${rows.map((r, i) => `<tr class="${markQualifiers && i < 2 ? 'qualify' : markQualifiers && i === 2 ? 'third' : ''}"><td>${teamLabel(r.team)}</td><td class="num">${r.pj}</td><td class="num">${r.g}</td><td class="num">${r.e}</td><td class="num">${r.p}</td><td class="num">${r.gf}</td><td class="num">${r.gc}</td><td class="num">${r.dg}</td><td class="num"><strong>${r.pts}</strong></td></tr>`).join('')}</tbody>
   </table>`;
 }
 
@@ -238,7 +290,7 @@ function renderGroups() {
   const thirds = groups.map(g => g.rows[2]).filter(Boolean).sort(sortRows).map((r, idx) => ({ ...r, rank: idx + 1 }));
   els.thirdsTable.innerHTML = thirds.length ? `<table>
     <thead><tr><th>#</th><th>Equipo</th><th>Grupo</th><th class="num">PJ</th><th class="num">DG</th><th class="num">GF</th><th class="num">Pts</th><th>Estado</th></tr></thead>
-    <tbody>${thirds.map(r => `<tr class="${r.rank <= 8 ? 'qualify' : ''}"><td>${r.rank}</td><td>${escapeHtml(r.team)}</td><td>${escapeHtml(r.group)}</td><td class="num">${r.pj}</td><td class="num">${r.dg}</td><td class="num">${r.gf}</td><td class="num"><strong>${r.pts}</strong></td><td>${r.rank <= 8 ? 'Clasificaría' : 'Fuera'}</td></tr>`).join('')}</tbody>
+    <tbody>${thirds.map(r => `<tr class="${r.rank <= 8 ? 'qualify' : ''}"><td>${r.rank}</td><td>${teamLabel(r.team)}</td><td>${escapeHtml(r.group)}</td><td class="num">${r.pj}</td><td class="num">${r.dg}</td><td class="num">${r.gf}</td><td class="num"><strong>${r.pts}</strong></td><td>${r.rank <= 8 ? 'Clasificaría' : 'Fuera'}</td></tr>`).join('')}</tbody>
   </table>` : emptyState();
 }
 
@@ -268,7 +320,7 @@ function renderScorers() {
   els.scorersCount.textContent = `${rows.length} jugador${rows.length === 1 ? '' : 'es'}`;
   els.scorersTable.innerHTML = rows.length ? `<table>
     <thead><tr><th>#</th><th>Jugador</th><th>Selección</th><th class="num">Goles</th><th class="num">Penaltis</th><th class="num">Partidos con gol</th></tr></thead>
-    <tbody>${rows.map((r, i) => `<tr><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${escapeHtml(r.team)}</td><td class="num"><strong>${r.goals}</strong></td><td class="num">${r.penalties}</td><td class="num">${r.matches.size}</td></tr>`).join('')}</tbody>
+    <tbody>${rows.map((r, i) => `<tr><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${teamLabel(r.team)}</td><td class="num"><strong>${r.goals}</strong></td><td class="num">${r.penalties}</td><td class="num">${r.matches.size}</td></tr>`).join('')}</tbody>
   </table>` : emptyState();
 }
 
@@ -276,8 +328,8 @@ function renderKnockout() {
   const knockout = filteredMatches().filter(m => !m.group);
   const byRound = groupBy(knockout, m => m.round || 'Eliminatoria');
   const order = ['Round of 32', 'Round of 16', 'Quarter-final', 'Semi-final', 'Match for third place', 'Final'];
-  const rounds = Object.keys(byRound).sort((a, b) => order.indexOf(a) - order.indexOf(b));
-  els.knockoutRounds.innerHTML = rounds.length ? rounds.map(round => `<article class="round-card"><h3>${translateRound(round)}</h3>${byRound[round].map(m => `<div class="match-card"><div><div class="time">${escapeHtml(m._madridTime)}</div><span class="tz">${escapeHtml(m._madridDate)}</span></div><div><div class="teams">${escapeHtml(m.team1 || 'Por definir')} <span class="muted">vs</span> ${escapeHtml(m.team2 || 'Por definir')}</div><div class="meta"><span>Partido ${escapeHtml(m.num || '')}</span><span>${escapeHtml(m.ground || '')}</span><span>${scoreText(m)}</span></div>${goalsText(m)}</div></div>`).join('')}</article>`).join('') : emptyState();
+  const rounds = Object.keys(byRound).sort((a, b) => { const ia = order.indexOf(a); const ib = order.indexOf(b); return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib) || a.localeCompare(b, 'es'); });
+  els.knockoutRounds.innerHTML = rounds.length ? rounds.map(round => `<article class="round-card"><h3>${translateRound(round)}</h3>${byRound[round].map(m => `<div class="match-card"><div><div class="time">${escapeHtml(m._madridTime)}</div><span class="tz">${escapeHtml(m._madridDate)}</span></div><div><div class="teams">${teamLabel(m.team1)} <span class="muted">vs</span> ${teamLabel(m.team2)}</div><div class="meta"><span>Partido ${escapeHtml(m.num || '')}</span><span>${escapeHtml(m.ground || '')}</span><span>${scoreText(m)}</span></div>${goalsText(m)}</div></div>`).join('')}</article>`).join('') : emptyState();
 }
 
 function translateRound(round) {
