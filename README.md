@@ -1,10 +1,19 @@
-# Mundial 2026 Tracker — V1.2.2
+# Mundial 2026 Tracker — V1.2.3
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
 
 
 
+
+
+## Cambios V1.2.3
+
+- Corrección crítica del módulo de TV en España.
+- La app ya no depende solo de IDs externos para asignar TV.
+- Ahora cruza también por fecha en España + selecciones.
+- Alemania - Curazao aparece correctamente como `La 1 · RTVE Play · DAZN`.
+- Evita que partidos confirmados en RTVE aparezcan erróneamente solo como DAZN.
 
 ## Cambios V1.2.2
 

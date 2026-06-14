@@ -1,10 +1,10 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "updated_at": "2026-06-14",
   "country": "España",
   "notes": [
-    "Archivo externo para asignar televisión en España a cada partido.",
-    "Actualización V1.2.2: añadidos los partidos de fase de grupos anunciados en abierto por RTVE/La 1.",
+    "V1.2.3: corrección crítica. La TV ya no depende solo de IDs externos, porque OpenFootball puede usar otros IDs internos.",
+    "La app cruza también por fecha en España + selecciones, por ejemplo Germany-Curacao el 2026-06-14.",
     "DAZN se mantiene como canal por defecto para todos los partidos si no hay regla específica.",
     "En eliminatorias se mantiene la lógica de fallback: DAZN + RTVE por confirmar salvo que se actualice este archivo."
   ],
@@ -237,5 +237,245 @@
       "label": "La 1 · RTVE Play · DAZN",
       "note": "Confirmado en abierto para fase de grupos: Colombia - Portugal."
     }
-  }
+  },
+  "fixtures": [
+    {
+      "date_es": "2026-06-11",
+      "team1": "Mexico",
+      "team2": "South Africa",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-12",
+      "team1": "Canada",
+      "team2": "Bosnia and Herzegovina",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-14",
+      "team1": "Brazil",
+      "team2": "Morocco",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-14",
+      "team1": "Germany",
+      "team2": "Curacao",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-15",
+      "team1": "Spain",
+      "team2": "Cape Verde",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido de España en abierto por RTVE/La 1."
+    },
+    {
+      "date_es": "2026-06-16",
+      "team1": "France",
+      "team2": "Senegal",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-17",
+      "team1": "England",
+      "team2": "Croatia",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-18",
+      "team1": "Switzerland",
+      "team2": "Bosnia and Herzegovina",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-19",
+      "team1": "United States",
+      "team2": "Australia",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-20",
+      "team1": "Netherlands",
+      "team2": "Sweden",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-21",
+      "team1": "Spain",
+      "team2": "Saudi Arabia",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido de España en abierto por RTVE/La 1."
+    },
+    {
+      "date_es": "2026-06-22",
+      "team1": "Argentina",
+      "team2": "Austria",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-23",
+      "team1": "England",
+      "team2": "Ghana",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-24",
+      "team1": "Scotland",
+      "team2": "Brazil",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-25",
+      "team1": "Ecuador",
+      "team2": "Germany",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    },
+    {
+      "date_es": "2026-06-27",
+      "team1": "Uruguay",
+      "team2": "Spain",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido de España en abierto por RTVE/La 1."
+    },
+    {
+      "date_es": "2026-06-28",
+      "team1": "Colombia",
+      "team2": "Portugal",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    }
+  ]
 }

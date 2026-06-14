@@ -116,8 +116,39 @@ function normalizeTvInfo(info) {
   };
 }
 
+function normalizeNameForTv(value) {
+  return String(value || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, 'and')
+    .replace(/\./g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sameTeamForTv(a, b) {
+  return normalizeNameForTv(a) === normalizeNameForTv(b);
+}
+
+function fixtureTvMatch(match, fixture) {
+  if (!fixture) return false;
+  const dateOk = !fixture.date_es || fixture.date_es === match._madridDate;
+  const direct = sameTeamForTv(match.team1, fixture.team1) && sameTeamForTv(match.team2, fixture.team2);
+  const reverse = sameTeamForTv(match.team1, fixture.team2) && sameTeamForTv(match.team2, fixture.team1);
+  return dateOk && (direct || reverse);
+}
+
+
 function tvInfo(match) {
   const data = state.tvData || {};
+
+  // Primero: cruce robusto por fecha española + selecciones.
+  // Esto evita errores cuando OpenFootball usa un ID distinto al de otras fuentes.
+  const fixture = (data.fixtures || []).find(item => fixtureTvMatch(match, item));
+  if (fixture) return normalizeTvInfo(fixture);
+
+  // Segundo: cruce por ID si coincide con el JSON deportivo.
   const byMatch = data.matches || {};
   const key = matchKey(match);
   if (key && byMatch[key]) return normalizeTvInfo(byMatch[key]);
