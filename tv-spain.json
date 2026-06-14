@@ -1,11 +1,12 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated_at": "2026-06-14",
   "country": "España",
   "notes": [
     "Archivo externo para asignar televisión en España a cada partido.",
-    "DAZN se usa como canal por defecto para todos los partidos si no hay regla específica.",
-    "RTVE se marca como confirmado solo cuando exista confirmación concreta. En eliminatorias, se usan reglas de fallback."
+    "Actualización V1.2.2: añadidos los partidos de fase de grupos anunciados en abierto por RTVE/La 1.",
+    "DAZN se mantiene como canal por defecto para todos los partidos si no hay regla específica.",
+    "En eliminatorias se mantiene la lógica de fallback: DAZN + RTVE por confirmar salvo que se actualice este archivo."
   ],
   "default": {
     "channels": [
@@ -58,7 +59,7 @@
       "free_to_air": true,
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
-      "note": "España en fase de grupos. Sustituir por dato oficial si cambia."
+      "note": "Confirmado en abierto para fase de grupos: España - Cabo Verde."
     },
     "66456998": {
       "channels": [
@@ -69,7 +70,7 @@
       "free_to_air": true,
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
-      "note": "España en fase de grupos. Sustituir por dato oficial si cambia."
+      "note": "Confirmado en abierto para fase de grupos: España - Arabia Saudí."
     },
     "66457002": {
       "channels": [
@@ -80,7 +81,161 @@
       "free_to_air": true,
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
-      "note": "España en fase de grupos. Sustituir por dato oficial si cambia."
+      "note": "Confirmado en abierto para fase de grupos: Uruguay - España."
+    },
+    "66456904": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: México - Sudáfrica."
+    },
+    "66456916": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Canadá - Bosnia y Herzegovina."
+    },
+    "66456928": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Brasil - Marruecos."
+    },
+    "66457070": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Alemania - Curazao."
+    },
+    "66457006": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Francia - Senegal."
+    },
+    "66457042": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Inglaterra - Croacia."
+    },
+    "66456922": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Suiza - Bosnia y Herzegovina."
+    },
+    "66456944": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Estados Unidos - Australia."
+    },
+    "66456972": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Países Bajos - Suecia."
+    },
+    "66457022": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Argentina - Austria."
+    },
+    "66457046": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Inglaterra - Ghana."
+    },
+    "66456936": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Escocia - Brasil."
+    },
+    "66457078": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Ecuador - Alemania."
+    },
+    "66457038": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Confirmado en abierto para fase de grupos: Colombia - Portugal."
     }
   }
 }
