@@ -1,7 +1,43 @@
-# Mundial 2026 Tracker — V1.1.2
+# Mundial 2026 Tracker — V1.2.1
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
+
+
+
+## Cambios V1.2.1
+
+- España queda destacada visualmente cuando aparece en partidos, grupos, resultados, goleadores o cruces.
+- El resaltado usa una burbuja discreta en amarillo/rojo, con algo más de peso visual sin romper la estética.
+
+## Cambios V1.2
+
+- Añadida televisión en España en cada partido.
+- Nuevo archivo externo `tv-spain.json` para actualizar canales sin tocar el código.
+- Filtro de TV: todos, solo abierto, RTVE, DAZN y por confirmar.
+- Reglas automáticas para eliminatorias: España, final y partidos pendientes de confirmación.
+- Fallback prudente: donde no haya dato concreto, se muestra DAZN o “RTVE por confirmar”.
+
+## Cómo actualizar la TV
+
+Edita `tv-spain.json` en GitHub. No hace falta modificar `index.html`, `styles.css` ni `app.js`.
+
+Ejemplo:
+
+```json
+"66456994": {
+  "channels": ["La 1", "RTVE Play", "DAZN"],
+  "free_to_air": true,
+  "status": "confirmed",
+  "label": "La 1 · RTVE Play · DAZN"
+}
+```
+
+Estados recomendados:
+
+- `confirmed`: confirmado.
+- `probable`: probable / regla de fallback.
+- `tbc`: por confirmar.
 
 ## Cambios V1.1.2
 

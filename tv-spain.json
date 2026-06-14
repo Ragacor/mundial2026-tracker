@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-06-14",
+  "country": "España",
+  "notes": [
+    "Archivo externo para asignar televisión en España a cada partido.",
+    "DAZN se usa como canal por defecto para todos los partidos si no hay regla específica.",
+    "RTVE se marca como confirmado solo cuando exista confirmación concreta. En eliminatorias, se usan reglas de fallback."
+  ],
+  "default": {
+    "channels": [
+      "DAZN"
+    ],
+    "free_to_air": false,
+    "status": "confirmed",
+    "label": "DAZN"
+  },
+  "rules": {
+    "spain_matches": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "probable",
+      "label": "RTVE probable · DAZN",
+      "note": "Regla automática: si juega España, mostrar RTVE como probable salvo que el partido esté confirmado en matches."
+    },
+    "final": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "probable",
+      "label": "RTVE probable · DAZN",
+      "note": "Regla automática para la final si no hay confirmación concreta."
+    },
+    "knockout_pending": {
+      "channels": [
+        "DAZN"
+      ],
+      "free_to_air": false,
+      "status": "tbc",
+      "label": "DAZN · RTVE por confirmar",
+      "note": "Regla automática para eliminatorias sin dato concreto."
+    }
+  },
+  "matches": {
+    "66456994": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "España en fase de grupos. Sustituir por dato oficial si cambia."
+    },
+    "66456998": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "España en fase de grupos. Sustituir por dato oficial si cambia."
+    },
+    "66457002": {
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "España en fase de grupos. Sustituir por dato oficial si cambia."
+    }
+  }
+}

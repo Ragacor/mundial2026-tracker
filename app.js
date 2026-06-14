@@ -5,8 +5,10 @@ const DATA_SOURCES = {
 const state = {
   data: null,
   matches: [],
+  tvData: null,
   selectedDate: null,
   search: '',
+  tvFilter: 'all',
   activeTab: 'daily'
 };
 
@@ -57,14 +59,136 @@ function teamFlag(teamName) {
 }
 
 function teamLabel(teamName) {
-  const name = escapeHtml(teamName || 'Por definir');
-  const flag = teamFlag(teamName);
-  return `<span class="team-label"><span class="flag" aria-hidden="true">${flag}</span><span>${name}</span></span>`;
+  const rawName = teamName || 'Por definir';
+  const name = escapeHtml(rawName);
+  const flag = teamFlag(rawName);
+  const spainClass = isSpainTeam(rawName) ? ' spain-team' : '';
+  return `<span class="team-label${spainClass}"><span class="flag" aria-hidden="true">${flag}</span><span>${name}</span></span>`;
 }
+
+
+async function loadTvData() {
+  try {
+    const response = await fetch(`tv-spain.json?cacheBust=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    state.tvData = await response.json();
+    if (els.tvStatus) els.tvStatus.textContent = `TV cargada · actualizado ${state.tvData.updated_at || 'sin fecha'}`;
+    renderAll();
+  } catch (error) {
+    state.tvData = {
+      default: { channels: ['DAZN'], free_to_air: false, status: 'confirmed', label: 'DAZN' },
+      rules: {
+        spain_matches: { channels: ['La 1', 'RTVE Play', 'DAZN'], free_to_air: true, status: 'probable', label: 'RTVE probable · DAZN' },
+        final: { channels: ['La 1', 'RTVE Play', 'DAZN'], free_to_air: true, status: 'probable', label: 'RTVE probable · DAZN' },
+        knockout_pending: { channels: ['DAZN'], free_to_air: false, status: 'tbc', label: 'DAZN · RTVE por confirmar' }
+      },
+      matches: {}
+    };
+    if (els.tvStatus) els.tvStatus.textContent = 'No se pudo cargar tv-spain.json. Usando reglas básicas.';
+    renderAll();
+  }
+}
+
+function matchKey(match) {
+  return String(match.num || match.id || '').trim();
+}
+
+function isSpainTeam(team) {
+  return /^(spain|españa)$/i.test(String(team || '').trim());
+}
+
+function isFinalRound(match) {
+  return /^final$/i.test(String(match.round || '').trim());
+}
+
+function isKnockout(match) {
+  return !match.group;
+}
+
+function normalizeTvInfo(info) {
+  const channels = Array.isArray(info.channels) ? info.channels : [];
+  return {
+    channels,
+    free_to_air: Boolean(info.free_to_air),
+    status: info.status || 'tbc',
+    label: info.label || channels.join(' · ') || 'TV por confirmar',
+    note: info.note || ''
+  };
+}
+
+function tvInfo(match) {
+  const data = state.tvData || {};
+  const byMatch = data.matches || {};
+  const key = matchKey(match);
+  if (key && byMatch[key]) return normalizeTvInfo(byMatch[key]);
+
+  if (isSpainTeam(match.team1) || isSpainTeam(match.team2)) {
+    return normalizeTvInfo(data.rules?.spain_matches || {
+      channels: ['La 1', 'RTVE Play', 'DAZN'],
+      free_to_air: true,
+      status: 'probable',
+      label: 'RTVE probable · DAZN'
+    });
+  }
+
+  if (isFinalRound(match)) {
+    return normalizeTvInfo(data.rules?.final || {
+      channels: ['La 1', 'RTVE Play', 'DAZN'],
+      free_to_air: true,
+      status: 'probable',
+      label: 'RTVE probable · DAZN'
+    });
+  }
+
+  if (isKnockout(match)) {
+    return normalizeTvInfo(data.rules?.knockout_pending || {
+      channels: ['DAZN'],
+      free_to_air: false,
+      status: 'tbc',
+      label: 'DAZN · RTVE por confirmar'
+    });
+  }
+
+  return normalizeTvInfo(data.default || {
+    channels: ['DAZN'],
+    free_to_air: false,
+    status: 'confirmed',
+    label: 'DAZN'
+  });
+}
+
+function tvStatusLabel(status) {
+  return { confirmed: 'Confirmado', probable: 'Probable', tbc: 'Por confirmar' }[status] || 'Por confirmar';
+}
+
+function tvBadge(match) {
+  const info = tvInfo(match);
+  const cls = info.free_to_air ? 'tv-badge free' : info.status === 'tbc' ? 'tv-badge tbc' : 'tv-badge';
+  return `<div class="${cls}" title="${escapeHtml(info.note || '')}">
+    <span class="tv-icon">📺</span>
+    <span>${escapeHtml(info.label)}</span>
+    <em>${tvStatusLabel(info.status)}</em>
+  </div>`;
+}
+
+function matchPassesTvFilter(match) {
+  const filter = state.tvFilter || 'all';
+  if (filter === 'all') return true;
+  const info = tvInfo(match);
+  const text = `${info.channels.join(' ')} ${info.label}`.toLowerCase();
+  if (filter === 'free') return info.free_to_air;
+  if (filter === 'rtve') return info.free_to_air || /rtve|la 1|teledeporte/i.test(text);
+  if (filter === 'dazn') return /dazn/i.test(text);
+  if (filter === 'tbc') return info.status === 'tbc' || /por confirmar/i.test(text);
+  return true;
+}
+
 
 const els = {
   sourceStatus: document.getElementById('sourceStatus'),
   sourceSelect: document.getElementById('sourceSelect'),
+  tvFilter: document.getElementById('tvFilter'),
+  tvStatus: document.getElementById('tvStatus'),
   datePicker: document.getElementById('datePicker'),
   prevDay: document.getElementById('prevDay'),
   todayBtn: document.getElementById('todayBtn'),
@@ -188,8 +312,12 @@ function applyData(data, statusText = 'Datos cargados', statusType = 'ok') {
 
 function filteredMatches(matches = state.matches) {
   const q = state.search.trim().toLowerCase();
-  if (!q) return matches;
-  return matches.filter(m => [m.team1, m.team2, m.group, m.ground, m.round].some(v => String(v || '').toLowerCase().includes(q)));
+  let result = matches;
+  if (q) {
+    result = result.filter(m => [m.team1, m.team2, m.group, m.ground, m.round].some(v => String(v || '').toLowerCase().includes(q)));
+  }
+  result = result.filter(matchPassesTvFilter);
+  return result;
 }
 
 function scoreText(match) {
@@ -228,6 +356,7 @@ function matchCard(match) {
         ${match.num ? `<span>Partido ${escapeHtml(match.num)}</span>` : ''}
         <span>${escapeHtml(match.ground || '')}</span>
       </div>
+      ${tvBadge(match)}
       ${goalsText(match)}
     </div>
     ${resultBadge(match)}
@@ -335,7 +464,7 @@ function renderKnockout() {
   const byRound = groupBy(knockout, m => m.round || 'Eliminatoria');
   const order = ['Round of 32', 'Round of 16', 'Quarter-final', 'Semi-final', 'Match for third place', 'Final'];
   const rounds = Object.keys(byRound).sort((a, b) => { const ia = order.indexOf(a); const ib = order.indexOf(b); return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib) || a.localeCompare(b, 'es'); });
-  els.knockoutRounds.innerHTML = rounds.length ? rounds.map(round => `<article class="round-card"><h3>${translateRound(round)}</h3>${byRound[round].map(m => `<div class="match-card"><div><div class="time">${escapeHtml(m._madridTime)}</div><span class="tz">${escapeHtml(m._madridDate)}</span></div><div><div class="teams">${teamLabel(m.team1)} <span class="muted">vs</span> ${teamLabel(m.team2)}</div><div class="meta"><span>Partido ${escapeHtml(m.num || '')}</span><span>${escapeHtml(m.ground || '')}</span><span>${scoreText(m)}</span></div>${goalsText(m)}</div></div>`).join('')}</article>`).join('') : emptyState();
+  els.knockoutRounds.innerHTML = rounds.length ? rounds.map(round => `<article class="round-card"><h3>${translateRound(round)}</h3>${byRound[round].map(m => `<div class="match-card"><div><div class="time">${escapeHtml(m._madridTime)}</div><span class="tz">${escapeHtml(m._madridDate)}</span></div><div><div class="teams">${teamLabel(m.team1)} <span class="muted">vs</span> ${teamLabel(m.team2)}</div><div class="meta"><span>Partido ${escapeHtml(m.num || '')}</span><span>${escapeHtml(m.ground || '')}</span><span>${scoreText(m)}</span></div>${tvBadge(m)}${goalsText(m)}</div></div>`).join('')}</article>`).join('') : emptyState();
 }
 
 function translateRound(round) {
@@ -392,6 +521,12 @@ function setupEvents() {
     state.search = els.teamSearch.value;
     renderAll();
   });
+  if (els.tvFilter) {
+    els.tvFilter.addEventListener('change', () => {
+      state.tvFilter = els.tvFilter.value || 'all';
+      renderAll();
+    });
+  }
   els.tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.tab)));
   els.sourceSelect.addEventListener('change', () => {
     if (els.sourceSelect.value === 'openfootball') loadDefaultData();
@@ -434,3 +569,4 @@ function activateTab(tabName) {
 
 setupEvents();
 loadDefaultData();
+loadTvData();

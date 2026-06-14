@@ -462,3 +462,104 @@ tr.third td:first-child::before { content: "●"; color: var(--accent); margin-r
     grid-column: 1 / -1;
   }
 }
+
+
+/* V1.2 — TV Spain module */
+.tv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(12, 31, 52, 0.10);
+  background: rgba(22, 93, 255, 0.075);
+  color: #17406f;
+  font-weight: 900;
+  font-size: 0.82rem;
+  line-height: 1.1;
+}
+
+.tv-badge.free {
+  background: rgba(15,179,95,0.12);
+  border-color: rgba(15,179,95,0.25);
+  color: var(--green);
+}
+
+.tv-badge.tbc {
+  background: rgba(245,200,76,0.18);
+  border-color: rgba(245,200,76,0.38);
+  color: #735200;
+}
+
+.tv-badge em {
+  font-style: normal;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding-left: 3px;
+}
+
+.tv-icon {
+  font-size: 1rem;
+}
+
+.tv-panel select {
+  margin-top: 3px;
+}
+
+@media (max-width: 950px) {
+  .tv-badge {
+    font-size: 0.78rem;
+    padding: 6px 8px;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .tv-badge em {
+    font-size: 0.58rem;
+  }
+
+  .tv-panel[open] {
+    order: -1;
+  }
+}
+
+
+/* V1.2.1 — España visual highlight */
+.team-label.spain-team {
+  padding: 3px 8px 4px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(245, 200, 76, 0.24), rgba(220, 38, 38, 0.10));
+  border: 1px solid rgba(220, 38, 38, 0.20);
+  color: #071421;
+  font-weight: 1000;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.08);
+}
+
+.team-label.spain-team .flag {
+  transform: scale(1.08);
+}
+
+.teams .team-label.spain-team {
+  font-size: 1.04em;
+}
+
+table .team-label.spain-team {
+  padding: 2px 7px 3px;
+}
+
+.goals .team-label.spain-team {
+  padding: 1px 6px 2px;
+}
+
+@media (max-width: 950px) {
+  .team-label.spain-team {
+    padding: 3px 7px 4px;
+  }
+
+  .teams .team-label.spain-team {
+    font-size: 1.03em;
+  }
+}

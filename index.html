@@ -122,6 +122,19 @@
         <input id="teamSearch" type="search" placeholder="España, México, Dallas…" />
       </details>
 
+      <details class="panel tv-panel" open>
+        <summary>Televisión en España</summary>
+        <label for="tvFilter">Filtro TV</label>
+        <select id="tvFilter">
+          <option value="all">Todos los partidos</option>
+          <option value="free">Solo en abierto</option>
+          <option value="rtve">RTVE / La 1 / RTVE Play</option>
+          <option value="dazn">DAZN</option>
+          <option value="tbc">TV por confirmar</option>
+        </select>
+        <p class="small" id="tvStatus">Cargando tv-spain.json…</p>
+      </details>
+
       <details class="panel source-panel">
         <summary>Ajustes y fuente de datos</summary>
         <label for="sourceSelect">Fuente de datos</label>
@@ -150,7 +163,7 @@
   </main>
 
   <footer class="footer">
-    <p>Datos por defecto: OpenFootball worldcup.json. La app convierte automáticamente a horario de España. Para datos live minuto a minuto, usa una API deportiva con eventos de partido.</p>
+    <p>Datos por defecto: OpenFootball worldcup.json. La app convierte automáticamente a horario de España. La televisión en España se carga desde tv-spain.json y puede actualizarse sin tocar el código.</p>
   </footer>
 
   <template id="emptyStateTemplate">
