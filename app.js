@@ -130,18 +130,96 @@ function normalizeNameForTv(value) {
     .trim();
 
   const aliases = {
-    'usa': 'united states', 'united states of america': 'united states', 'us': 'united states',
-    'u s a': 'united states', 'ee uu': 'united states', 'curacao': 'curacao', 'curaçao': 'curacao',
-    'czech republic': 'czechia', 'korea republic': 'south korea', 'republic of korea': 'south korea',
-    'cote divoire': 'ivory coast', 'cote d ivoire': 'ivory coast', 'espana': 'spain', 'españa': 'spain',
-    'países bajos': 'netherlands', 'paises bajos': 'netherlands', 'bosnia': 'bosnia and herzegovina',
-    'bosnia herzegovina': 'bosnia and herzegovina', 'bosnia and herzegovina': 'bosnia and herzegovina',
-    'arabia saudi': 'saudi arabia', 'arabia saudí': 'saudi arabia', 'cabo verde': 'cape verde',
-    'sudafrica': 'south africa', 'sudáfrica': 'south africa', 'alemania': 'germany', 'brasil': 'brazil',
-    'marruecos': 'morocco', 'mexico': 'mexico', 'méxico': 'mexico', 'canada': 'canada', 'canadá': 'canada',
-    'francia': 'france', 'inglaterra': 'england', 'croacia': 'croatia', 'suiza': 'switzerland',
-    'escocia': 'scotland', 'suecia': 'sweden', 'estados unidos': 'united states'
+    'usa': 'united states',
+    'us': 'united states',
+    'u s a': 'united states',
+    'united states of america': 'united states',
+    'estados unidos': 'united states',
+    'eeuu': 'united states',
+    'ee uu': 'united states',
+
+    'spain': 'spain',
+    'espana': 'spain',
+    'españa': 'spain',
+
+    'germany': 'germany',
+    'alemania': 'germany',
+    'curacao': 'curacao',
+    'curazao': 'curacao',
+    'curaçao': 'curacao',
+
+    'switzerland': 'switzerland',
+    'suiza': 'switzerland',
+    'algeria': 'algeria',
+    'argelia': 'algeria',
+
+    'australia': 'australia',
+    'egypt': 'egypt',
+    'egipto': 'egypt',
+
+    'brazil': 'brazil',
+    'brasil': 'brazil',
+    'morocco': 'morocco',
+    'marruecos': 'morocco',
+
+    'mexico': 'mexico',
+    'méxico': 'mexico',
+    'south africa': 'south africa',
+    'sudafrica': 'south africa',
+    'sudáfrica': 'south africa',
+
+    'canada': 'canada',
+    'canadá': 'canada',
+    'bosnia': 'bosnia and herzegovina',
+    'bosnia herzegovina': 'bosnia and herzegovina',
+    'bosnia y herzegovina': 'bosnia and herzegovina',
+    'bosnia and herzegovina': 'bosnia and herzegovina',
+
+    'cape verde': 'cape verde',
+    'cabo verde': 'cape verde',
+    'saudi arabia': 'saudi arabia',
+    'arabia saudi': 'saudi arabia',
+    'arabia saudí': 'saudi arabia',
+
+    'france': 'france',
+    'francia': 'france',
+    'senegal': 'senegal',
+    'england': 'england',
+    'inglaterra': 'england',
+    'croatia': 'croatia',
+    'croacia': 'croatia',
+
+    'netherlands': 'netherlands',
+    'paises bajos': 'netherlands',
+    'países bajos': 'netherlands',
+    'sweden': 'sweden',
+    'suecia': 'sweden',
+
+    'argentina': 'argentina',
+    'austria': 'austria',
+    'ghana': 'ghana',
+    'scotland': 'scotland',
+    'escocia': 'scotland',
+    'ecuador': 'ecuador',
+    'uruguay': 'uruguay',
+    'colombia': 'colombia',
+    'portugal': 'portugal',
+    'paraguay': 'paraguay',
+    'norway': 'norway',
+    'noruega': 'norway',
+    'canada': 'canada',
+    'japan': 'japan',
+    'japon': 'japan',
+    'japón': 'japan',
+    'haiti': 'haiti',
+    'haití': 'haiti',
+    'qatar': 'qatar',
+    'iran': 'iran',
+    'iran': 'iran',
+    'new zealand': 'new zealand',
+    'nueva zelanda': 'new zealand'
   };
+
   return aliases[raw] || raw;
 }
 function sameTeamForTv(a, b) {

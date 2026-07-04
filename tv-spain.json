@@ -1,8 +1,11 @@
 {
-  "version": "1.3",
-  "updated_at": "2026-06-14",
+  "version": "1.4",
+  "updated_at": "2026-07-04",
   "country": "España",
   "notes": [
+    "V1.3.1: añadidos cruces de eliminatorias confirmados/identificados para RTVE/La 1.",
+    "La fase de eliminatorias debe mantenerse en tv-spain.json conforme RTVE confirme partidos.",
+    "DAZN sigue como canal por defecto para todos los partidos si no hay entrada específica.",
     "La app cruza televisión por pareja de selecciones, sin depender de IDs ni fechas.",
     "Para actualizar partidos en abierto, edita open_matches."
   ],
@@ -695,6 +698,45 @@
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
       "note": "Partido en abierto RTVE/La 1: Colombia - Portugal."
+    },
+    {
+      "team1": "Paraguay",
+      "team2": "France",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Octavos de final confirmado en La 1 / RTVE Play según RTVE y AS."
+    },
+    {
+      "team1": "Brazil",
+      "team2": "Norway",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Octavos de final anunciado en directo en RTVE / RTVE Play."
+    },
+    {
+      "team1": "Portugal",
+      "team2": "Spain",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Octavos de final de España: La 1 / RTVE Play / DAZN."
     }
   ]
 }
