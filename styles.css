@@ -581,3 +581,7 @@ table .team-label.spain-team {
 .video-link-search span {
   background: rgba(12, 31, 52, 0.08);
 }
+
+
+/* V1.3.6 — no generic RTVE search fallback.
+   The app only shows RTVE summary buttons when videos-rtve.json contains a direct usable link. */
