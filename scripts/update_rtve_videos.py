@@ -1,43 +1,179 @@
 #!/usr/bin/env python3
-import json, re, unicodedata, urllib.request
+import json
+import re
+import unicodedata
+import urllib.request
 from html import unescape
 from pathlib import Path
 from datetime import datetime, timezone
-COLLECTION_URL='https://www.rtve.es/play/colecciones/mundial-2026-resumenes/4735/'
-ROOT=Path(__file__).resolve().parents[1]
-OUTPUT=ROOT/'videos-rtve.json'
-ALIASES={'mexico':'Mexico','sudafrica':'South Africa','canada':'Canada','bosnia':'Bosnia and Herzegovina','brasil':'Brazil','marruecos':'Morocco','alemania':'Germany','curazao':'Curacao','espana':'Spain','cabo verde':'Cape Verde','francia':'France','senegal':'Senegal','inglaterra':'England','croacia':'Croatia','suiza':'Switzerland','eeuu':'United States','estados unidos':'United States','australia':'Australia','paises bajos':'Netherlands','suecia':'Sweden','arabia saudi':'Saudi Arabia','argentina':'Argentina','austria':'Austria','ghana':'Ghana','escocia':'Scotland','ecuador':'Ecuador','uruguay':'Uruguay','colombia':'Colombia','portugal':'Portugal'}
-def norm(t):
-    t=unescape(t or ''); t=re.sub(r'<[^>]+>',' ',t); t=unicodedata.normalize('NFD',t); t=''.join(ch for ch in t if unicodedata.category(ch)!='Mn'); t=t.lower(); t=t.replace('&',' y '); t=re.sub(r'[^\w\s-]',' ',t); t=t.replace('-',' '); return re.sub(r'\s+',' ',t).strip()
-def canon(team): return ALIASES.get(norm(team), team.strip())
+
+COLLECTION_URL = "https://www.rtve.es/play/colecciones/mundial-2026-resumenes/4735/"
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT = ROOT / "videos-rtve.json"
+
+TEAM_VARIANTS = {
+    "Algeria": ["algeria", "argelia"],
+    "Argentina": ["argentina"],
+    "Australia": ["australia"],
+    "Austria": ["austria"],
+    "Belgium": ["belgium", "belgica", "bélgica"],
+    "Bosnia and Herzegovina": ["bosnia", "bosnia herzegovina", "bosnia y herzegovina", "bosnia and herzegovina"],
+    "Brazil": ["brazil", "brasil"],
+    "Canada": ["canada", "canadá"],
+    "Cape Verde": ["cape verde", "cabo verde"],
+    "Colombia": ["colombia"],
+    "Croatia": ["croatia", "croacia"],
+    "Curacao": ["curacao", "curazao", "curaçao"],
+    "Ecuador": ["ecuador"],
+    "Egypt": ["egypt", "egipto"],
+    "England": ["england", "inglaterra"],
+    "France": ["france", "francia"],
+    "Germany": ["germany", "alemania"],
+    "Ghana": ["ghana"],
+    "Haiti": ["haiti", "haití"],
+    "Iran": ["iran", "irán"],
+    "Japan": ["japan", "japon", "japón"],
+    "Mexico": ["mexico", "méxico"],
+    "Morocco": ["morocco", "marruecos"],
+    "Netherlands": ["netherlands", "paises bajos", "países bajos"],
+    "New Zealand": ["new zealand", "nueva zelanda"],
+    "Norway": ["norway", "noruega"],
+    "Paraguay": ["paraguay"],
+    "Portugal": ["portugal"],
+    "Qatar": ["qatar"],
+    "Saudi Arabia": ["saudi arabia", "arabia saudi", "arabia saudí"],
+    "Scotland": ["scotland", "escocia"],
+    "Senegal": ["senegal"],
+    "South Africa": ["south africa", "sudafrica", "sudáfrica"],
+    "Spain": ["spain", "espana", "españa"],
+    "Sweden": ["sweden", "suecia"],
+    "Switzerland": ["switzerland", "suiza"],
+    "Tunisia": ["tunisia", "tunez", "túnez"],
+    "Turkey": ["turkey", "turquia", "turquía"],
+    "United States": ["united states", "usa", "estados unidos", "eeuu", "ee uu"],
+    "Uruguay": ["uruguay"]
+}
+
+def norm(text):
+    text = unescape(text or "")
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = unicodedata.normalize("NFD", text)
+    text = "".join(ch for ch in text if unicodedata.category(ch) != "Mn")
+    text = text.lower().replace("&", " y ")
+    text = re.sub(r"[^a-z0-9\s/-]", " ", text)
+    text = text.replace("-", " ")
+    return re.sub(r"\s+", " ", text).strip()
+
 def fetch(url):
-    req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 Mundial2026Tracker/1.0'});
-    with urllib.request.urlopen(req,timeout=30) as r: return r.read().decode('utf-8',errors='replace')
-def abs_url(h): return h if h.startswith('http') else 'https://www.rtve.es'+h
-def extract(html):
-    out=[]
-    for m in re.finditer(r'<a[^>]+href="([^"]*resumen-partido-mundial-2026/[^"]*)"[^>]*>(.*?)</a>', html, re.I|re.S):
-        href, body=m.groups(); title=re.sub(r'<[^>]+>',' ',body); title=re.sub(r'\s+',' ',unescape(title)).strip()
-        if len(title)<12:
-            ctx=html[max(0,m.start()-500):min(len(html),m.end()+500)]; title=re.sub(r'<[^>]+>',' ',ctx); title=re.sub(r'\s+',' ',unescape(title)).strip()[:220]
-        tm=re.search(r'([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .]+?)\s*-\s*([A-Za-zÁÉÍÓÚÜÑáéíóúüñ .]+?)\s*:', title)
-        if not tm: continue
-        out.append({'team1':canon(tm.group(1)),'team2':canon(tm.group(2)),'title':title,'url':abs_url(href),'source':'RTVE Play'})
-    seen={};
-    for item in out:
-        key=tuple(sorted([norm(item['team1']),norm(item['team2'])])); seen[key]=item
-    return list(seen.values())
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Mundial2026Tracker/1.3.3"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+def abs_url(href):
+    return href if href.startswith("http") else "https://www.rtve.es" + href
+
+def clean_title(fragment):
+    text = re.sub(r"<[^>]+>", " ", fragment or "")
+    return re.sub(r"\s+", " ", unescape(text)).strip()
+
+def find_teams(text):
+    ntext = norm(text)
+    hits = []
+    for canonical, variants in TEAM_VARIANTS.items():
+        best = None
+        for variant in variants:
+            v = norm(variant)
+            m = re.search(rf"(^|\s){re.escape(v)}($|\s)", ntext)
+            if m:
+                best = m.start() if best is None else min(best, m.start())
+        if best is not None:
+            hits.append((best, canonical))
+    hits.sort()
+    out = []
+    for _, team in hits:
+        if team not in out:
+            out.append(team)
+    return out
+
+def extract_links(html):
+    links = []
+    for match in re.finditer(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', html, re.I | re.S):
+        href, body = match.groups()
+        low = href.lower()
+        if "rtve.es" not in low and not low.startswith("/play/"):
+            continue
+        if "/play/videos/" not in low:
+            continue
+        combined = norm(href + " " + body)
+        if not any(x in combined for x in ["mundial", "fifa", "resumen", "goles"]):
+            continue
+        start = max(0, match.start() - 900)
+        end = min(len(html), match.end() + 900)
+        context = clean_title(html[start:end])
+        title = clean_title(body)
+        if len(title) < 12:
+            slug = href.strip("/").split("/")[-2] if "/" in href.strip("/") else href
+            title = slug.replace("-", " ")
+        links.append({"href": abs_url(href), "title": title[:240], "context": context[:500]})
+    return links
+
+def extract_videos(html):
+    candidates = []
+    for item in extract_links(html):
+        text = " ".join([item["title"], item["href"], item["context"]])
+        teams = find_teams(text)
+        if len(teams) < 2:
+            continue
+        ntext = norm(text)
+        if not any(x in ntext for x in ["resumen", "goles", "mejores jugadas"]):
+            continue
+        candidates.append({
+            "team1": teams[0],
+            "team2": teams[1],
+            "title": item["title"],
+            "url": item["href"],
+            "source": "RTVE Play"
+        })
+
+    seen = set()
+    videos = []
+    for item in candidates:
+        key = tuple(sorted([norm(item["team1"]), norm(item["team2"])]))
+        if key not in seen:
+            seen.add(key)
+            videos.append(item)
+    return videos
+
+def pair_key(item):
+    return tuple(sorted([norm(item.get("team1")), norm(item.get("team2"))]))
+
 def main():
-    html=fetch(COLLECTION_URL); videos=extract(html)
-    prev={}
+    html = fetch(COLLECTION_URL)
+    videos = extract_videos(html)
+
+    previous = {}
     if OUTPUT.exists():
-        try: prev=json.loads(OUTPUT.read_text(encoding='utf-8'))
-        except Exception: prev={}
-    merged={}
-    for item in prev.get('videos',[])+videos:
-        key=tuple(sorted([norm(item.get('team1')),norm(item.get('team2'))]));
-        if key[0] and key[1]: merged[key]=item
-    data={'version':'1.1','updated_at':datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),'source_collection':COLLECTION_URL,'videos':sorted(merged.values(),key=lambda x:(x.get('team1',''),x.get('team2','')))}
-    OUTPUT.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(f"videos-rtve.json actualizado: {len(data['videos'])} vídeos")
-if __name__=='__main__': main()
+        try:
+            previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        except Exception:
+            previous = {}
+
+    by_pair = {}
+    for item in previous.get("videos", []) + videos:
+        key = pair_key(item)
+        if key[0] and key[1]:
+            by_pair[key] = item
+
+    output = {
+        "version": "1.3",
+        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "source_collection": COLLECTION_URL,
+        "videos": sorted(by_pair.values(), key=lambda x: (x.get("team1",""), x.get("team2","")))
+    }
+    OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"videos-rtve.json actualizado: {len(output['videos'])} vídeos")
+    for item in sorted(videos, key=lambda x: (x.get("team1",""), x.get("team2",""))):
+        print(f"- {item['team1']} vs {item['team2']}")
+
+if __name__ == "__main__":
+    main()
