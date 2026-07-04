@@ -570,3 +570,14 @@ table .team-label.spain-team {
 .video-link span { display:inline-grid; place-items:center; width:18px; height:18px; border-radius:999px; background:rgba(220,38,38,.14); font-size:.72rem; }
 .video-link:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(220,38,38,.11); }
 @media (max-width:950px){ .video-link{font-size:.78rem; padding:6px 9px;} }
+
+
+/* V1.3.4 — fallback search for missing RTVE summaries */
+.video-link-search {
+  background: linear-gradient(135deg, rgba(12, 31, 52, 0.055), rgba(245, 200, 76, 0.12));
+  border-color: rgba(12, 31, 52, 0.14);
+  color: #4b5563;
+}
+.video-link-search span {
+  background: rgba(12, 31, 52, 0.08);
+}

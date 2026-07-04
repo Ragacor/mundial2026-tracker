@@ -282,11 +282,20 @@ function rtveVideoInfo(match) {
   const videos = state.videosData?.videos || [];
   return videos.find(video => videoFixtureMatch(match, video)) || null;
 }
-function rtveVideoButton(match) {
-  const video = rtveVideoInfo(match);
-  if (!video || !video.url) return '';
-  return `<a class="video-link" href="${escapeHtml(video.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(video.title || 'Resumen RTVE')}"><span>▶</span><strong>Resumen RTVE</strong></a>`;
+function rtveSearchUrl(match) {
+  const query = `${match.team1 || ''} ${match.team2 || ''} resumen Mundial 2026 RTVE`;
+  return `https://www.rtve.es/buscador/?q=${encodeURIComponent(query)}`;
 }
+
+function rtveVideoButton(match) {
+  if (!match._hasScore) return '';
+  const video = rtveVideoInfo(match);
+  if (video && video.url) {
+    return `<a class="video-link" href="${escapeHtml(video.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(video.title || 'Resumen RTVE')}"><span>▶</span><strong>Resumen RTVE</strong></a>`;
+  }
+  return `<a class="video-link video-link-search" href="${escapeHtml(rtveSearchUrl(match))}" target="_blank" rel="noopener noreferrer" title="Buscar resumen en RTVE"><span>⌕</span><strong>Buscar resumen RTVE</strong></a>`;
+}
+
 function matchPassesTvFilter(match) {
   const filter = state.tvFilter || 'all';
   if (filter === 'all') return true;
