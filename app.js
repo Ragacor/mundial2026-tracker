@@ -6,6 +6,7 @@ const state = {
   data: null,
   matches: [],
   tvData: null,
+  videosData: null,
   selectedDate: null,
   search: '',
   tvFilter: 'all',
@@ -72,7 +73,7 @@ async function loadTvData() {
     const response = await fetch(`tv-spain.json?cacheBust=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.tvData = await response.json();
-    if (els.tvStatus) els.tvStatus.textContent = `TV cargada · actualizado ${state.tvData.updated_at || 'sin fecha'}`;
+    if (els.tvStatus) els.tvStatus.textContent = `TV cargada · v${state.tvData.version || '?'} · actualizado ${state.tvData.updated_at || 'sin fecha'}`;
     renderAll();
   } catch (error) {
     state.tvData = {
@@ -117,77 +118,56 @@ function normalizeTvInfo(info) {
 }
 
 function normalizeNameForTv(value) {
-  return String(value || '')
+  const raw = String(value || '')
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/&/g, 'and')
+    .replace(/[’']/g, '')
     .replace(/\./g, '')
+    .replace(/-/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-}
 
+  const aliases = {
+    'usa': 'united states', 'united states of america': 'united states', 'us': 'united states',
+    'u s a': 'united states', 'ee uu': 'united states', 'curacao': 'curacao', 'curaçao': 'curacao',
+    'czech republic': 'czechia', 'korea republic': 'south korea', 'republic of korea': 'south korea',
+    'cote divoire': 'ivory coast', 'cote d ivoire': 'ivory coast', 'espana': 'spain', 'españa': 'spain',
+    'países bajos': 'netherlands', 'paises bajos': 'netherlands', 'bosnia': 'bosnia and herzegovina',
+    'bosnia herzegovina': 'bosnia and herzegovina', 'bosnia and herzegovina': 'bosnia and herzegovina',
+    'arabia saudi': 'saudi arabia', 'arabia saudí': 'saudi arabia', 'cabo verde': 'cape verde',
+    'sudafrica': 'south africa', 'sudáfrica': 'south africa', 'alemania': 'germany', 'brasil': 'brazil',
+    'marruecos': 'morocco', 'mexico': 'mexico', 'méxico': 'mexico', 'canada': 'canada', 'canadá': 'canada',
+    'francia': 'france', 'inglaterra': 'england', 'croacia': 'croatia', 'suiza': 'switzerland',
+    'escocia': 'scotland', 'suecia': 'sweden', 'estados unidos': 'united states'
+  };
+  return aliases[raw] || raw;
+}
 function sameTeamForTv(a, b) {
   return normalizeNameForTv(a) === normalizeNameForTv(b);
 }
 
 function fixtureTvMatch(match, fixture) {
   if (!fixture) return false;
-  const dateOk = !fixture.date_es || fixture.date_es === match._madridDate;
   const direct = sameTeamForTv(match.team1, fixture.team1) && sameTeamForTv(match.team2, fixture.team2);
   const reverse = sameTeamForTv(match.team1, fixture.team2) && sameTeamForTv(match.team2, fixture.team1);
-  return dateOk && (direct || reverse);
+  return direct || reverse;
 }
-
-
 function tvInfo(match) {
   const data = state.tvData || {};
-
-  // Primero: cruce robusto por fecha española + selecciones.
-  // Esto evita errores cuando OpenFootball usa un ID distinto al de otras fuentes.
+  const openMatch = (data.open_matches || []).find(item => fixtureTvMatch(match, item));
+  if (openMatch) return normalizeTvInfo(openMatch);
   const fixture = (data.fixtures || []).find(item => fixtureTvMatch(match, item));
   if (fixture) return normalizeTvInfo(fixture);
-
-  // Segundo: cruce por ID si coincide con el JSON deportivo.
   const byMatch = data.matches || {};
   const key = matchKey(match);
   if (key && byMatch[key]) return normalizeTvInfo(byMatch[key]);
-
-  if (isSpainTeam(match.team1) || isSpainTeam(match.team2)) {
-    return normalizeTvInfo(data.rules?.spain_matches || {
-      channels: ['La 1', 'RTVE Play', 'DAZN'],
-      free_to_air: true,
-      status: 'probable',
-      label: 'RTVE probable · DAZN'
-    });
-  }
-
-  if (isFinalRound(match)) {
-    return normalizeTvInfo(data.rules?.final || {
-      channels: ['La 1', 'RTVE Play', 'DAZN'],
-      free_to_air: true,
-      status: 'probable',
-      label: 'RTVE probable · DAZN'
-    });
-  }
-
-  if (isKnockout(match)) {
-    return normalizeTvInfo(data.rules?.knockout_pending || {
-      channels: ['DAZN'],
-      free_to_air: false,
-      status: 'tbc',
-      label: 'DAZN · RTVE por confirmar'
-    });
-  }
-
-  return normalizeTvInfo(data.default || {
-    channels: ['DAZN'],
-    free_to_air: false,
-    status: 'confirmed',
-    label: 'DAZN'
-  });
+  if (isSpainTeam(match.team1) || isSpainTeam(match.team2)) return normalizeTvInfo(data.rules?.spain_matches || {channels:['La 1','RTVE Play','DAZN'],free_to_air:true,status:'confirmed',label:'La 1 · RTVE Play · DAZN'});
+  if (isFinalRound(match)) return normalizeTvInfo(data.rules?.final || {channels:['La 1','RTVE Play','DAZN'],free_to_air:true,status:'probable',label:'RTVE probable · DAZN'});
+  if (isKnockout(match)) return normalizeTvInfo(data.rules?.knockout_pending || {channels:['DAZN'],free_to_air:false,status:'tbc',label:'DAZN · RTVE por confirmar'});
+  return normalizeTvInfo(data.default || {channels:['DAZN'],free_to_air:false,status:'confirmed',label:'DAZN'});
 }
-
 function tvStatusLabel(status) {
   return { confirmed: 'Confirmado', probable: 'Probable', tbc: 'Por confirmar' }[status] || 'Por confirmar';
 }
@@ -202,6 +182,33 @@ function tvBadge(match) {
   </div>`;
 }
 
+
+async function loadRtveVideos() {
+  try {
+    const response = await fetch(`videos-rtve.json?cacheBust=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    state.videosData = await response.json();
+    renderAll();
+  } catch (error) {
+    state.videosData = { videos: [] };
+  }
+}
+function videoFixtureMatch(match, video) {
+  if (!video) return false;
+  const direct = sameTeamForTv(match.team1, video.team1) && sameTeamForTv(match.team2, video.team2);
+  const reverse = sameTeamForTv(match.team1, video.team2) && sameTeamForTv(match.team2, video.team1);
+  return direct || reverse;
+}
+function rtveVideoInfo(match) {
+  if (!match._hasScore) return null;
+  const videos = state.videosData?.videos || [];
+  return videos.find(video => videoFixtureMatch(match, video)) || null;
+}
+function rtveVideoButton(match) {
+  const video = rtveVideoInfo(match);
+  if (!video || !video.url) return '';
+  return `<a class="video-link" href="${escapeHtml(video.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(video.title || 'Resumen RTVE')}"><span>▶</span><strong>Resumen RTVE</strong></a>`;
+}
 function matchPassesTvFilter(match) {
   const filter = state.tvFilter || 'all';
   if (filter === 'all') return true;
@@ -388,6 +395,7 @@ function matchCard(match) {
         <span>${escapeHtml(match.ground || '')}</span>
       </div>
       ${tvBadge(match)}
+      ${rtveVideoButton(match)}
       ${goalsText(match)}
     </div>
     ${resultBadge(match)}
@@ -495,7 +503,7 @@ function renderKnockout() {
   const byRound = groupBy(knockout, m => m.round || 'Eliminatoria');
   const order = ['Round of 32', 'Round of 16', 'Quarter-final', 'Semi-final', 'Match for third place', 'Final'];
   const rounds = Object.keys(byRound).sort((a, b) => { const ia = order.indexOf(a); const ib = order.indexOf(b); return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib) || a.localeCompare(b, 'es'); });
-  els.knockoutRounds.innerHTML = rounds.length ? rounds.map(round => `<article class="round-card"><h3>${translateRound(round)}</h3>${byRound[round].map(m => `<div class="match-card"><div><div class="time">${escapeHtml(m._madridTime)}</div><span class="tz">${escapeHtml(m._madridDate)}</span></div><div><div class="teams">${teamLabel(m.team1)} <span class="muted">vs</span> ${teamLabel(m.team2)}</div><div class="meta"><span>Partido ${escapeHtml(m.num || '')}</span><span>${escapeHtml(m.ground || '')}</span><span>${scoreText(m)}</span></div>${tvBadge(m)}${goalsText(m)}</div></div>`).join('')}</article>`).join('') : emptyState();
+  els.knockoutRounds.innerHTML = rounds.length ? rounds.map(round => `<article class="round-card"><h3>${translateRound(round)}</h3>${byRound[round].map(m => `<div class="match-card"><div><div class="time">${escapeHtml(m._madridTime)}</div><span class="tz">${escapeHtml(m._madridDate)}</span></div><div><div class="teams">${teamLabel(m.team1)} <span class="muted">vs</span> ${teamLabel(m.team2)}</div><div class="meta"><span>Partido ${escapeHtml(m.num || '')}</span><span>${escapeHtml(m.ground || '')}</span><span>${scoreText(m)}</span></div>${tvBadge(m)}${rtveVideoButton(m)}${goalsText(m)}</div></div>`).join('')}</article>`).join('') : emptyState();
 }
 
 function translateRound(round) {
@@ -601,3 +609,4 @@ function activateTab(tabName) {
 setupEvents();
 loadDefaultData();
 loadTvData();
+loadRtveVideos();

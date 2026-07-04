@@ -1,4 +1,4 @@
-# Mundial 2026 Tracker — V1.2.3
+# Mundial 2026 Tracker — V1.3
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
@@ -6,6 +6,31 @@ App web estática para seguir el Mundial 2026: partidos diarios en horario espa�
 
 
 
+
+
+## Cambios V1.3
+
+- Añadido botón `▶ Resumen RTVE` en partidos finalizados cuando exista enlace.
+- Nuevo archivo `videos-rtve.json`.
+- Nueva automatización con GitHub Actions: `.github/workflows/update-rtve-videos.yml` y `scripts/update_rtve_videos.py`.
+- La automatización consulta la colección pública de resúmenes de RTVE y actualiza `videos-rtve.json`.
+- No se incrustan vídeos: la app abre la página de RTVE Play en una pestaña nueva.
+- La TV en España se cruza por pareja de selecciones para evitar errores por IDs externos.
+
+## Cómo activar la automatización de RTVE
+
+1. Sube todos los archivos y carpetas del ZIP al repositorio.
+2. En GitHub entra en `Actions`.
+3. Si GitHub te pide activar workflows, pulsa `I understand my workflows, go ahead and enable them`.
+4. Abre el workflow `Update RTVE videos`.
+5. Pulsa `Run workflow` para probarlo manualmente.
+6. Después se ejecutará solo varias veces al día.
+
+## Archivos nuevos
+
+- `videos-rtve.json`
+- `scripts/update_rtve_videos.py`
+- `.github/workflows/update-rtve-videos.yml`
 
 ## Cambios V1.2.3
 

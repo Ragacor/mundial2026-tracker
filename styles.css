@@ -563,3 +563,10 @@ table .team-label.spain-team {
     font-size: 1.03em;
   }
 }
+
+
+/* V1.3 — RTVE video summaries */
+.video-link { display:inline-flex; align-items:center; gap:7px; margin-top:9px; padding:7px 10px; border-radius:999px; text-decoration:none; border:1px solid rgba(220,38,38,.22); background:linear-gradient(135deg,rgba(220,38,38,.12),rgba(245,200,76,.18)); color:#7a1111; font-size:.82rem; font-weight:950; }
+.video-link span { display:inline-grid; place-items:center; width:18px; height:18px; border-radius:999px; background:rgba(220,38,38,.14); font-size:.72rem; }
+.video-link:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(220,38,38,.11); }
+@media (max-width:950px){ .video-link{font-size:.78rem; padding:6px 9px;} }

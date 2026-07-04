@@ -1,12 +1,10 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "updated_at": "2026-06-14",
   "country": "España",
   "notes": [
-    "V1.2.3: corrección crítica. La TV ya no depende solo de IDs externos, porque OpenFootball puede usar otros IDs internos.",
-    "La app cruza también por fecha en España + selecciones, por ejemplo Germany-Curacao el 2026-06-14.",
-    "DAZN se mantiene como canal por defecto para todos los partidos si no hay regla específica.",
-    "En eliminatorias se mantiene la lógica de fallback: DAZN + RTVE por confirmar salvo que se actualice este archivo."
+    "La app cruza televisión por pareja de selecciones, sin depender de IDs ni fechas.",
+    "Para actualizar partidos en abierto, edita open_matches."
   ],
   "default": {
     "channels": [
@@ -24,9 +22,9 @@
         "DAZN"
       ],
       "free_to_air": true,
-      "status": "probable",
-      "label": "RTVE probable · DAZN",
-      "note": "Regla automática: si juega España, mostrar RTVE como probable salvo que el partido esté confirmado en matches."
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Si juega España, se marca en abierto por RTVE/La 1 salvo corrección posterior."
     },
     "final": {
       "channels": [
@@ -36,8 +34,7 @@
       ],
       "free_to_air": true,
       "status": "probable",
-      "label": "RTVE probable · DAZN",
-      "note": "Regla automática para la final si no hay confirmación concreta."
+      "label": "RTVE probable · DAZN"
     },
     "knockout_pending": {
       "channels": [
@@ -45,8 +42,7 @@
       ],
       "free_to_air": false,
       "status": "tbc",
-      "label": "DAZN · RTVE por confirmar",
-      "note": "Regla automática para eliminatorias sin dato concreto."
+      "label": "DAZN · RTVE por confirmar"
     }
   },
   "matches": {
@@ -476,6 +472,229 @@
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
       "note": "Partido en abierto por RTVE/La 1 en fase de grupos."
+    }
+  ],
+  "open_matches": [
+    {
+      "team1": "Mexico",
+      "team2": "South Africa",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Mexico - South Africa."
+    },
+    {
+      "team1": "Canada",
+      "team2": "Bosnia and Herzegovina",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Canada - Bosnia and Herzegovina."
+    },
+    {
+      "team1": "Brazil",
+      "team2": "Morocco",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Brazil - Morocco."
+    },
+    {
+      "team1": "Germany",
+      "team2": "Curacao",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Germany - Curacao."
+    },
+    {
+      "team1": "Spain",
+      "team2": "Cape Verde",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Spain - Cape Verde."
+    },
+    {
+      "team1": "France",
+      "team2": "Senegal",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: France - Senegal."
+    },
+    {
+      "team1": "England",
+      "team2": "Croatia",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: England - Croatia."
+    },
+    {
+      "team1": "Switzerland",
+      "team2": "Bosnia and Herzegovina",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Switzerland - Bosnia and Herzegovina."
+    },
+    {
+      "team1": "United States",
+      "team2": "Australia",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: United States - Australia."
+    },
+    {
+      "team1": "Netherlands",
+      "team2": "Sweden",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Netherlands - Sweden."
+    },
+    {
+      "team1": "Spain",
+      "team2": "Saudi Arabia",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Spain - Saudi Arabia."
+    },
+    {
+      "team1": "Argentina",
+      "team2": "Austria",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Argentina - Austria."
+    },
+    {
+      "team1": "England",
+      "team2": "Ghana",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: England - Ghana."
+    },
+    {
+      "team1": "Scotland",
+      "team2": "Brazil",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Scotland - Brazil."
+    },
+    {
+      "team1": "Ecuador",
+      "team2": "Germany",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Ecuador - Germany."
+    },
+    {
+      "team1": "Uruguay",
+      "team2": "Spain",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Uruguay - Spain."
+    },
+    {
+      "team1": "Colombia",
+      "team2": "Portugal",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Partido en abierto RTVE/La 1: Colombia - Portugal."
     }
   ]
 }
