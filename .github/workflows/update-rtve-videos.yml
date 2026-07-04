@@ -16,15 +16,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-
       - name: Update videos-rtve.json
         run: python scripts/update_rtve_videos.py
-
       - name: Commit changes if videos changed
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
