@@ -1,4 +1,4 @@
-# Mundial 2026 Tracker — V1.3.6
+# Mundial 2026 Tracker — V1.3.7
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
@@ -13,6 +13,22 @@ App web estática para seguir el Mundial 2026: partidos diarios en horario espa�
 
 
 
+
+
+## Cambios V1.3.7
+
+- Restaurados los resúmenes directos que se habían perdido al sobrescribir `videos-rtve.json`.
+- Eliminada definitivamente la búsqueda genérica de RTVE.
+- Añadidos enlaces directos/manuales para partidos de eliminatorias ya jugados:
+  - Países Bajos - Marruecos
+  - Costa de Marfil - Noruega
+  - Francia - Suecia
+  - Estados Unidos - Bosnia Herzegovina
+  - España - Austria
+  - Argentina - Cabo Verde
+  - Australia - Egipto
+  - Colombia - Ghana
+- La app solo muestra `Resumen RTVE` cuando hay enlace directo útil.
 
 ## Cambios V1.3.6
 
