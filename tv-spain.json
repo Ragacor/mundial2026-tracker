@@ -1,13 +1,14 @@
 {
-  "version": "1.4",
-  "updated_at": "2026-07-04",
+  "version": "1.5",
+  "updated_at": "2026-07-09",
   "country": "España",
   "notes": [
-    "V1.3.1: añadidos cruces de eliminatorias confirmados/identificados para RTVE/La 1.",
-    "La fase de eliminatorias debe mantenerse en tv-spain.json conforme RTVE confirme partidos.",
-    "DAZN sigue como canal por defecto para todos los partidos si no hay entrada específica.",
-    "La app cruza televisión por pareja de selecciones, sin depender de IDs ni fechas.",
-    "Para actualizar partidos en abierto, edita open_matches."
+    "V1.3.8: actualización de televisión para los cuartos de final a 9 de julio de 2026.",
+    "Francia - Marruecos: La 1 · RTVE Play · DAZN.",
+    "España - Bélgica: La 1 · RTVE Play · DAZN.",
+    "Noruega - Inglaterra: DAZN.",
+    "Argentina - Suiza: DAZN.",
+    "DAZN emite los 104 partidos. RTVE se añade solo cuando existe confirmación explícita."
   ],
   "default": {
     "channels": [
@@ -737,6 +738,56 @@
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
       "note": "Octavos de final de España: La 1 / RTVE Play / DAZN."
+    },
+    {
+      "team1": "France",
+      "team2": "Morocco",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Cuartos de final. Confirmado por RTVE: jueves 9 de julio de 2026 a las 22:00."
+    },
+    {
+      "team1": "Spain",
+      "team2": "Belgium",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Cuartos de final. Confirmado por RTVE: viernes 10 de julio de 2026 a las 21:00."
+    }
+  ],
+  "explicit_fixtures": [
+    {
+      "team1": "Norway",
+      "team2": "England",
+      "channels": [
+        "DAZN"
+      ],
+      "free_to_air": false,
+      "status": "confirmed",
+      "label": "DAZN",
+      "note": "Cuartos de final. DAZN confirmado; RTVE no lo incluye entre los cuartos anunciados para La 1 / RTVE Play en su actualización del 8 de julio."
+    },
+    {
+      "team1": "Argentina",
+      "team2": "Switzerland",
+      "channels": [
+        "DAZN"
+      ],
+      "free_to_air": false,
+      "status": "confirmed",
+      "label": "DAZN",
+      "note": "Cuartos de final. DAZN confirmado; RTVE no lo incluye entre los cuartos anunciados para La 1 / RTVE Play en su actualización del 8 de julio."
     }
   ]
 }

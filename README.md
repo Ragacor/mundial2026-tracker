@@ -1,4 +1,4 @@
-# Mundial 2026 Tracker — V1.3.7
+# Mundial 2026 Tracker — V1.3.8
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
@@ -14,6 +14,16 @@ App web estática para seguir el Mundial 2026: partidos diarios en horario espa�
 
 
 
+
+
+## Cambios V1.3.8
+
+- Actualizada la televisión de los cuartos de final con información vigente a 9 de julio de 2026.
+- Francia - Marruecos → `La 1 · RTVE Play · DAZN`
+- España - Bélgica → `La 1 · RTVE Play · DAZN`
+- Noruega - Inglaterra → `DAZN`
+- Argentina - Suiza → `DAZN`
+- La app ahora admite `explicit_fixtures` para marcar partidos de eliminatorias como DAZN solamente cuando RTVE no los anuncia en abierto.
 
 ## Cambios V1.3.7
 

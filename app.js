@@ -236,6 +236,8 @@ function tvInfo(match) {
   const data = state.tvData || {};
   const openMatch = (data.open_matches || []).find(item => fixtureTvMatch(match, item));
   if (openMatch) return normalizeTvInfo(openMatch);
+  const explicitFixture = (data.explicit_fixtures || []).find(item => fixtureTvMatch(match, item));
+  if (explicitFixture) return normalizeTvInfo(explicitFixture);
   const fixture = (data.fixtures || []).find(item => fixtureTvMatch(match, item));
   if (fixture) return normalizeTvInfo(fixture);
   const byMatch = data.matches || {};
