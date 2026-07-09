@@ -1,8 +1,36 @@
 {
-  "version": "1.7",
-  "updated_at": "2026-07-04",
+  "version": "1.5",
+  "updated_at": "2026-07-09T08:57:55Z",
   "source_collection": "https://www.rtve.es/play/colecciones/mundial-2026-resumenes/4735/",
   "videos": [
+    {
+      "team1": "Algeria",
+      "team2": "Belgium",
+      "title": "Suiza - Argelia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Suiza - Argelia de dieciseisavos del Mundial 2026 03.07.2026 2.0 min.",
+      "url": "https://www.rtve.es/play/videos/programa/suiza-argelia-resumen-partido-mundial-2026/17142400/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Algeria",
+      "team2": "Croatia",
+      "title": "Copa Mundial de la FIFA 2026 Portugal - Croacia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Portugal - Croacia de dieciseisavos de final en el Mundial 2026 03.07.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/portugal-croacia-resumen-partido-mundial-2026/17142394/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Argentina",
+      "team2": "Australia",
+      "title": "Copa Mundial de la FIFA 2026 Australia - Egipto: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Australia - Egipto de dieciseisavos del Mundial 2026 04.07.2026 2.0 mi",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/australia-egipto-resumen-partido-mundial-2026/17142416/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Argentina",
+      "team2": "Austria",
+      "title": "Copa Mundial de la FIFA 2026 Argentina - Austria: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Argentina - Austria del Grupo J en el Mundial 2026 22.06.2026 6.1 min",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/argentina-austria-resumen-partido-mundial-2026/17109777/",
+      "source": "RTVE Play"
+    },
     {
       "team1": "Argentina",
       "team2": "Cape Verde",
@@ -11,10 +39,129 @@
       "source": "RTVE Play"
     },
     {
+      "team1": "Argentina",
+      "team2": "Colombia",
+      "title": "Copa Mundial de la FIFA 2026 Suiza - Colombia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Argentina - Egipto de octavos de final del Mundial 2026 08.07.2026 2.0 m",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/suiza-colombia-resumen-partido-mundial-2026/17145137/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Argentina",
+      "team2": "Egypt",
+      "title": "Copa Mundial de la FIFA 2026 Argentina - Egipto: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Argentina - Egipto de octavos de final del Mundial 2026 07.07.2026 10.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/argentina-egipto-resumen-partido-mundial-2026/17143451/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Australia",
+      "team2": "Bosnia and Herzegovina",
+      "title": "Copa Mundial de la FIFA 2026 EEUU - Australia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del EEUU - Australia del Grupo D en el Mundial 2026 19.06.2026 5.5 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/eeuu-australia-resumen-partido-mundial-2026/17109044/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Australia",
+      "team2": "Colombia",
+      "title": "Copa Mundial de la FIFA 2026 Colombia - Ghana: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Colombia - Ghana de dieciseisavos del Mundial 2026 04.07.2026 2.0 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/colombia-ghana-resumen-partido-mundial-2026/17142425/",
+      "source": "RTVE Play"
+    },
+    {
       "team1": "Australia",
       "team2": "Egypt",
       "title": "Australia - Egipto: resumen, jugadas y goles del partido del Mundial 2026",
       "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/australia-egipto-resumen-partido-mundial-2026/17142416/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Australia",
+      "team2": "Netherlands",
+      "title": "Copa Mundial de la FIFA 2026 Países Bajos - Suecia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Países Bajos - Suecia del Grupo F en el Mundial 2026 20.06.2026 5.4",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/paises-bajos-suecia-resumen-partido-mundial-2026/17109055/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Austria",
+      "team2": "Croatia",
+      "title": "Copa Mundial de la FIFA 2026 España - Austria: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del España - Austria de dieciseisavos de final en el Mundial 2026 02.07.2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/espana-austria-resumen-partido-mundial-2026/17109896/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Belgium",
+      "team2": "Bosnia and Herzegovina",
+      "title": "Copa Mundial de la FIFA 2026 Bélgica - Senegal: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Bélgica - Senegal de dieciseisavos de final en el Mundial 2026 02.07.20",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/belgica-senegal-resumen-partido-mundial-2026/17141336/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Belgium",
+      "team2": "Brazil",
+      "title": "Copa Mundial de la FIFA 2026 Brasil - Noruega: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Brasil - Noruega de octavos de final del Mundial 2026 06.07.2026 9.8 min",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/brasil-noruega-resumen-jugadas-goles-del-partido-del-mundial-2026/17143340/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Belgium",
+      "team2": "Portugal",
+      "title": "Copa Mundial de la FIFA 2026 Portugal - España: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Portugal - España de octavos de final del Mundial 2026 06.07.2026 7.6 m",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/portugal-espana-resumen-partido-mundial-2026/17143371/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Bosnia and Herzegovina",
+      "team2": "Brazil",
+      "title": "Copa Mundial de la FIFA 2026 Brasil - Marruecos: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Brasil - Marruecos del Grupo C en el Mundial 2026 14.06.2026 3.1 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/brasil-marruecos-resumen-partido-mundial-2026/17109065/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Bosnia and Herzegovina",
+      "team2": "Canada",
+      "title": "Copa Mundial de la FIFA 2026 Canadá - Bosnia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Canadá - Bosnia del Grupo B en el Mundial 2026 12.06.2026 3.2 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/canada-bosnia-resumen-partido-mundial-2026/17108205/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Bosnia and Herzegovina",
+      "team2": "Croatia",
+      "title": "Copa Mundial de la FIFA 2026 Inglaterra - Croacia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Inglaterra - Croacia del Grupo L en el Mundial 2026 18.06.2026 9.2 m",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/inglaterra-croacia-resumen-partido-mundial-2026/17109919/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Bosnia and Herzegovina",
+      "team2": "England",
+      "title": "Copa Mundial de la FIFA 2026 Estados Unidos - Bosnia Herzegovina: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Estados Unidos - Bosnia Herzegovina de dieciseisavos ",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/estados-unidos-bosnia-herzegovina-mundial-2026-resumen-partido/17141301/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Brazil",
+      "team2": "Canada",
+      "title": "Copa Mundial de la FIFA 2026 Brasil - Japón: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen, los goles y las mejores jugadas del Brasil - Japón de dieciseisavos de final en el Mundial 2026. 29.06.2026 7.1 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/brasil-japon-resumen-partido-mundial-2026/17109882/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Brazil",
+      "team2": "Curacao",
+      "title": "Copa Mundial de la FIFA 2026 Alemania - Curazao: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Alemania - Curazao del Grupo E en el Mundial 2026 14.06.2026 5.5 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/alemania-curazao-resumen-partido-mundial-2026/17109058/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Brazil",
+      "team2": "Ecuador",
+      "title": "Copa Mundial de la FIFA 2026 Ecuador - Alemania: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Ecuador - Alemania del Grupo E en el Mundial 2026 26.06.2026 6.2 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/ecuador-alemania-resumen-partido-mundial-2026/17109771/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Brazil",
+      "team2": "France",
+      "title": "Copa Mundial de la FIFA 2026 Francia - Suecia: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Francia - Suecia de dieciseisavos del Mundial 2026 01.07.2026 9.2 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-suecia-resumen-partido-mundial-2026/17109888/",
       "source": "RTVE Play"
     },
     {
@@ -26,9 +173,30 @@
     },
     {
       "team1": "Canada",
-      "team2": "Bosnia and Herzegovina",
-      "title": "Canadá - Bosnia: resumen, jugadas y goles del partido del Mundial 2026",
-      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/canada-bosnia-resumen-partido-mundial-2026/17108205/",
+      "team2": "Colombia",
+      "title": "Copa Mundial de la FIFA 2026 Sudáfrica - Canadá: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Irán - Nueva Zelanda de dieciseisavos en el Mundial 2026 28.06.2026 5.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/sudafrica-canada-resumen-partido-mundial-2026/17109819/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Canada",
+      "team2": "France",
+      "title": "Copa Mundial de la FIFA 2026 Francia - Paraguay: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen, los goles y las mejores jugadas del Francia - Paraguay de octavos de final en el Mundial 2026. Mira el vídeo en RTV",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-paraguay-resumen-partido-mundial-2026/17109912/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Cape Verde",
+      "team2": "Curacao",
+      "title": "Copa Mundial de la FIFA 2026 España - Cabo Verde: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del España - Cabo Verde del Grupo H en el Mundial 2026 15.06.2026 3.9 min",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/espana-cabo-verde-resumen-partido-mundial-2026/17109793/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Cape Verde",
+      "team2": "France",
+      "title": "Copa Mundial de la FIFA 2026 Francia - Senegal: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Francia - Senegal del Grupo I en el Mundial 2026 16.06.2026 8.0 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-senegal-resumen-partido-mundial-2026/17109875/",
       "source": "RTVE Play"
     },
     {
@@ -36,6 +204,27 @@
       "team2": "Ghana",
       "title": "Colombia - Ghana: resumen, jugadas y goles del partido del Mundial 2026",
       "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/colombia-ghana-resumen-partido-mundial-2026/17142425/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Colombia",
+      "team2": "Portugal",
+      "title": "Copa Mundial de la FIFA 2026 Colombia - Portugal: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Colombia - Portugal del Grupo K en el Mundial 2026 28.06.2026 7.8 min",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/colombia-portugal-resumen-partido-mundial-2026/17109866/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "Ecuador",
+      "team2": "Germany",
+      "title": "Copa Mundial de la FIFA 2026 Uruguay - España: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Uruguay - España del Grupo H en el Mundial 2026 27.06.2026 7.7 min.",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/uruguay-espana-resumen-partido-mundial-2026/17109803/",
+      "source": "RTVE Play"
+    },
+    {
+      "team1": "England",
+      "team2": "France",
+      "title": "Copa Mundial de la FIFA 2026 Inglaterra - RD Congo: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del Inglaterra - RD Congo de dieciseisavos de final en el Mundial 2026 ",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/inglaterra-congo-resumen-partido-mundial-2026/17109899/",
       "source": "RTVE Play"
     },
     {
@@ -62,8 +251,8 @@
     {
       "team1": "Mexico",
       "team2": "South Africa",
-      "title": "México - Sudáfrica: resumen, jugadas y goles del partido del Mundial 2026",
-      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/mexico-sudafrica-resumen-partido-mundial-2026/17109016/",
+      "title": "RTVE Audio",
+      "url": "https://www.rtve.es/play/radio/",
       "source": "RTVE Play"
     },
     {
@@ -72,6 +261,13 @@
       "title": "Países Bajos - Marruecos: resumen, resultado y goles",
       "url": "https://www.rtve.es/deportes/20260630/mundial-2026-paises-bajos-marruecos-directo-resumen-resultado/17135766.shtml",
       "source": "RTVE"
+    },
+    {
+      "team1": "Netherlands",
+      "team2": "Saudi Arabia",
+      "title": "Copa Mundial de la FIFA 2026 España - Arabia Saudí: resumen, jugadas y goles del partido del Mundial 2026 Disfruta del resumen en vídeo, los goles y las mejores jugadas del España - Arabia Saudí del Grupo H en el Mundial 2026 21.06.2026 5.8",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/espana-arabia-saudi-resumen-partido-mundial-2026/17109056/",
+      "source": "RTVE Play"
     },
     {
       "team1": "Spain",
@@ -94,10 +290,5 @@
       "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/estados-unidos-bosnia-herzegovina-mundial-2026-resumen-partido/17141301/",
       "source": "RTVE Play"
     }
-  ],
-  "notes": [
-    "V1.3.7: restaurados y ampliados enlaces directos de RTVE.",
-    "Se elimina la búsqueda genérica y se muestran solo enlaces útiles.",
-    "Cuando el workflow automático no encuentre un enlace, puede añadirse aquí manualmente."
   ]
 }
