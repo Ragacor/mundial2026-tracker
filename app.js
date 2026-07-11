@@ -7,6 +7,8 @@ const state = {
   matches: [],
   tvData: null,
   videosData: null,
+  manualVideosData: null,
+  scheduleOverrides: [],
   selectedDate: null,
   search: '',
   tvFilter: 'all',
@@ -273,6 +275,17 @@ async function loadRtveVideos() {
     state.videosData = { videos: [] };
   }
 }
+
+async function loadManualRtveVideos() {
+  try {
+    const response = await fetch(`videos-rtve-manual.json?cacheBust=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    state.manualVideosData = await response.json();
+    renderAll();
+  } catch (error) {
+    state.manualVideosData = { videos: [] };
+  }
+}
 function videoFixtureMatch(match, video) {
   if (!video) return false;
   const direct = sameTeamForTv(match.team1, video.team1) && sameTeamForTv(match.team2, video.team2);
@@ -281,6 +294,10 @@ function videoFixtureMatch(match, video) {
 }
 function rtveVideoInfo(match) {
   if (!match._hasScore) return null;
+  const manualVideos = state.manualVideosData?.videos || [];
+  const manualMatch = manualVideos.find(video => videoFixtureMatch(match, video));
+  if (manualMatch) return manualMatch;
+
   const videos = state.videosData?.videos || [];
   return videos.find(video => videoFixtureMatch(match, video)) || null;
 }
@@ -406,6 +423,28 @@ function normalizeMatches(rawMatches = []) {
   }).sort((a, b) => (a._utcDate || 0) - (b._utcDate || 0));
 }
 
+
+async function loadScheduleOverrides() {
+  try {
+    const response = await fetch(`schedule-overrides.json?cacheBust=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    state.scheduleOverrides = Array.isArray(data.matches) ? data.matches : [];
+  } catch (error) {
+    state.scheduleOverrides = [];
+  }
+}
+
+function mergeScheduleOverrides(rawMatches = []) {
+  const overrides = new Map(
+    (state.scheduleOverrides || []).map(item => [String(item.num), item])
+  );
+  return rawMatches.map(match => {
+    const override = overrides.get(String(match.num));
+    return override ? { ...match, ...override } : match;
+  });
+}
+
 async function loadDefaultData() {
   setStatus('Actualizando desde OpenFootball…');
   try {
@@ -428,7 +467,7 @@ async function loadDefaultData() {
 function applyData(data, statusText = 'Datos cargados', statusType = 'ok') {
   if (!data || !Array.isArray(data.matches)) throw new Error('JSON no compatible: falta matches[]');
   state.data = data;
-  state.matches = normalizeMatches(data.matches);
+  state.matches = normalizeMatches(mergeScheduleOverrides(data.matches));
   setStatus(`${statusText} · ${state.matches.length} partidos`, statusType);
   renderAll();
 }
@@ -692,6 +731,11 @@ function activateTab(tabName) {
 }
 
 setupEvents();
-loadDefaultData();
-loadTvData();
-loadRtveVideos();
+
+(async function bootApp() {
+  await loadScheduleOverrides();
+  loadDefaultData();
+  loadTvData();
+  loadRtveVideos();
+  loadManualRtveVideos();
+})();

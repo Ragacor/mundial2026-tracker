@@ -1,4 +1,4 @@
-# Mundial 2026 Tracker — V1.3.8
+# Mundial 2026 Tracker — V1.3.9
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
@@ -15,6 +15,25 @@ App web estática para seguir el Mundial 2026: partidos diarios en horario espa�
 
 
 
+
+
+## Cambios V1.3.9
+
+- Calendario actualizado a 11 de julio de 2026:
+  - Francia 2-0 Marruecos.
+  - España 2-1 Bélgica.
+  - Semifinal definida: Francia - España, martes 14 de julio a las 21:00 (hora peninsular).
+  - Noruega - Inglaterra: sábado 11 de julio a las 23:00.
+  - Argentina - Suiza: madrugada del 11 al 12 de julio a las 03:00.
+- Televisión actualizada:
+  - Francia - España → `La 1 · RTVE Play · DAZN`.
+  - Final → `La 1 · RTVE Play · DAZN`.
+  - Segunda semifinal → `DAZN · RTVE por confirmar` hasta confirmación específica.
+- Nuevos resúmenes directos RTVE:
+  - Francia - Marruecos.
+  - España - Bélgica.
+- Nuevo archivo `schedule-overrides.json` para garantizar cruces y resultados recientes aunque OpenFootball tarde en actualizar.
+- Nuevo archivo `videos-rtve-manual.json` para conservar enlaces directos verificados sin que el workflow automático los sobrescriba.
 
 ## Cambios V1.3.8
 

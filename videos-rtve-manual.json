@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-07-11",
+  "videos": [
+    {
+      "team1": "France",
+      "team2": "Morocco",
+      "title": "Francia - Marruecos: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-marruecos-resumen-partido-mundial-2026/17148929/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
+    {
+      "team1": "Spain",
+      "team2": "Belgium",
+      "title": "España - Bélgica: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/espana-belgica-resumen-partido-mundial-2026/17148940/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    }
+  ]
+}

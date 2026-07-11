@@ -1,14 +1,13 @@
 {
-  "version": "1.5",
-  "updated_at": "2026-07-09",
+  "version": "1.6",
+  "updated_at": "2026-07-11",
   "country": "España",
   "notes": [
-    "V1.3.8: actualización de televisión para los cuartos de final a 9 de julio de 2026.",
-    "Francia - Marruecos: La 1 · RTVE Play · DAZN.",
-    "España - Bélgica: La 1 · RTVE Play · DAZN.",
-    "Noruega - Inglaterra: DAZN.",
-    "Argentina - Suiza: DAZN.",
-    "DAZN emite los 104 partidos. RTVE se añade solo cuando existe confirmación explícita."
+    "V1.3.9: actualización a 11 de julio de 2026.",
+    "Francia 2-0 Marruecos y España 2-1 Bélgica ya están incorporados en el calendario de overrides.",
+    "Semifinal Francia - España: martes 14 de julio a las 21:00, La 1 · RTVE Play · DAZN.",
+    "Final: La 1 · RTVE Play · DAZN, confirmada por la cobertura oficial de RTVE.",
+    "La otra semifinal se mantiene como DAZN · RTVE por confirmar hasta tener confirmación específica."
   ],
   "default": {
     "channels": [
@@ -37,8 +36,9 @@
         "DAZN"
       ],
       "free_to_air": true,
-      "status": "probable",
-      "label": "RTVE probable · DAZN"
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Final confirmada en abierto por RTVE/La 1 dentro de su cobertura oficial del Mundial 2026."
     },
     "knockout_pending": {
       "channels": [
@@ -764,6 +764,19 @@
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
       "note": "Cuartos de final. Confirmado por RTVE: viernes 10 de julio de 2026 a las 21:00."
+    },
+    {
+      "team1": "France",
+      "team2": "Spain",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Semifinal confirmada: Francia - España, martes 14 de julio de 2026 a las 21:00 (hora peninsular), en La 1 y RTVE Play. DAZN también emite el torneo."
     }
   ],
   "explicit_fixtures": [
