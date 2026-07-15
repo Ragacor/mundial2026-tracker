@@ -1,4 +1,4 @@
-# Mundial 2026 Tracker — V1.3.9
+# Mundial 2026 Tracker — V1.3.10
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
@@ -16,6 +16,20 @@ App web estática para seguir el Mundial 2026: partidos diarios en horario espa�
 
 
 
+
+
+## Cambios V1.3.10
+
+- Calendario actualizado a 15 de julio de 2026:
+  - Francia 0-2 España.
+  - España clasificada para la final.
+  - Inglaterra - Argentina: miércoles 15 de julio a las 21:00 (hora peninsular).
+  - Final: España vs ganador de Inglaterra - Argentina, domingo 19 de julio a las 21:00.
+- Televisión actualizada:
+  - Inglaterra - Argentina → `La 1 · RTVE Play · DAZN`.
+  - Final → `La 1 · RTVE Play · DAZN`.
+- Resumen añadido:
+  - Francia - España → enlace directo a RTVE con resumen en vídeo y resultado.
 
 ## Cambios V1.3.9
 

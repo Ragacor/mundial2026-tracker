@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "updated_at": "2026-07-11",
+  "version": "1.1",
+  "updated_at": "2026-07-15",
   "matches": [
     {
       "num": 97,
@@ -52,22 +52,28 @@
       "time": "15:00 UTC-4",
       "round": "Semifinal",
       "team1": "France",
-      "team2": "Spain"
+      "team2": "Spain",
+      "score": {
+        "ft": [
+          0,
+          2
+        ]
+      }
     },
     {
       "num": 102,
       "date": "2026-07-15",
       "time": "15:00 UTC-4",
       "round": "Semifinal",
-      "team1": "Winner of Match 99",
-      "team2": "Winner of Match 100"
+      "team1": "England",
+      "team2": "Argentina"
     },
     {
       "num": 103,
       "date": "2026-07-18",
       "time": "17:00 UTC-4",
       "round": "3rd Place Playoff",
-      "team1": "Loser of Match 101",
+      "team1": "France",
       "team2": "Loser of Match 102"
     },
     {
@@ -75,7 +81,7 @@
       "date": "2026-07-19",
       "time": "15:00 UTC-4",
       "round": "Final",
-      "team1": "Winner of Match 101",
+      "team1": "Spain",
       "team2": "Winner of Match 102"
     }
   ]

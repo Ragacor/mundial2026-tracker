@@ -1,13 +1,12 @@
 {
-  "version": "1.6",
-  "updated_at": "2026-07-11",
+  "version": "1.7",
+  "updated_at": "2026-07-15",
   "country": "España",
   "notes": [
-    "V1.3.9: actualización a 11 de julio de 2026.",
-    "Francia 2-0 Marruecos y España 2-1 Bélgica ya están incorporados en el calendario de overrides.",
-    "Semifinal Francia - España: martes 14 de julio a las 21:00, La 1 · RTVE Play · DAZN.",
-    "Final: La 1 · RTVE Play · DAZN, confirmada por la cobertura oficial de RTVE.",
-    "La otra semifinal se mantiene como DAZN · RTVE por confirmar hasta tener confirmación específica."
+    "V1.3.10: actualización a 15 de julio de 2026.",
+    "Francia 0-2 España: España clasificada para la final.",
+    "Semifinal Inglaterra - Argentina: miércoles 15 de julio a las 21:00, La 1 · RTVE Play · DAZN.",
+    "Final: España vs ganador de Inglaterra - Argentina, domingo 19 de julio a las 21:00, La 1 · RTVE Play · DAZN."
   ],
   "default": {
     "channels": [
@@ -777,6 +776,19 @@
       "status": "confirmed",
       "label": "La 1 · RTVE Play · DAZN",
       "note": "Semifinal confirmada: Francia - España, martes 14 de julio de 2026 a las 21:00 (hora peninsular), en La 1 y RTVE Play. DAZN también emite el torneo."
+    },
+    {
+      "team1": "England",
+      "team2": "Argentina",
+      "channels": [
+        "La 1",
+        "RTVE Play",
+        "DAZN"
+      ],
+      "free_to_air": true,
+      "status": "confirmed",
+      "label": "La 1 · RTVE Play · DAZN",
+      "note": "Semifinal confirmada: Inglaterra - Argentina, miércoles 15 de julio de 2026 a las 21:00 (hora peninsular), en La 1 y RTVE Play. DAZN también emite el torneo."
     }
   ],
   "explicit_fixtures": [
