@@ -1,4 +1,4 @@
-# Mundial 2026 Tracker — V1.3.10
+# Mundial 2026 Tracker — V1.4.0 FINAL
 
 App web estática para seguir el Mundial 2026: partidos diarios en horario español, clasificaciones, resultados, goleadores y cruces.
 
@@ -17,6 +17,27 @@ App web estática para seguir el Mundial 2026: partidos diarios en horario espa�
 
 
 
+
+
+## Cambios V1.4.0 FINAL
+
+- Mundial 2026 cerrado con todos los partidos finalizados.
+- Campeón: España.
+- Subcampeón: Argentina.
+- Tercer puesto: Inglaterra.
+- Cuarto puesto: Francia.
+- Final: España 1-0 Argentina.
+- Gol de la final: Ferran Torres, minuto 106.
+- Calendario definitivo actualizado:
+  - Francia 0-2 España.
+  - Inglaterra 1-2 Argentina.
+  - Francia 4-6 Inglaterra.
+  - España 1-0 Argentina.
+- La aplicación abre ahora directamente en la fecha de la final.
+- Añadido banner de campeón del mundo.
+- Añadidos enlaces RTVE directos y verificados desde cuartos hasta la final.
+- Se conservan los resúmenes automáticos de `videos-rtve.json`.
+- No se modifica el workflow de GitHub Actions.
 
 ## Cambios V1.3.10
 

@@ -1,6 +1,6 @@
 {
-  "version": "1.1",
-  "updated_at": "2026-07-15",
+  "version": "2.0",
+  "updated_at": "2026-07-21",
   "matches": [
     {
       "num": 97,
@@ -34,23 +34,35 @@
       "num": 99,
       "date": "2026-07-11",
       "time": "17:00 UTC-4",
-      "round": "Quarterfinal",
+      "round": "Quarter-final",
       "team1": "Norway",
-      "team2": "England"
+      "team2": "England",
+      "score": {
+        "ft": [
+          1,
+          2
+        ]
+      }
     },
     {
       "num": 100,
       "date": "2026-07-11",
       "time": "21:00 UTC-4",
-      "round": "Quarterfinal",
+      "round": "Quarter-final",
       "team1": "Argentina",
-      "team2": "Switzerland"
+      "team2": "Switzerland",
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      }
     },
     {
       "num": 101,
       "date": "2026-07-14",
       "time": "15:00 UTC-4",
-      "round": "Semifinal",
+      "round": "Semi-final",
       "team1": "France",
       "team2": "Spain",
       "score": {
@@ -64,17 +76,29 @@
       "num": 102,
       "date": "2026-07-15",
       "time": "15:00 UTC-4",
-      "round": "Semifinal",
+      "round": "Semi-final",
       "team1": "England",
-      "team2": "Argentina"
+      "team2": "Argentina",
+      "score": {
+        "ft": [
+          1,
+          2
+        ]
+      }
     },
     {
       "num": 103,
       "date": "2026-07-18",
       "time": "17:00 UTC-4",
-      "round": "3rd Place Playoff",
+      "round": "Match for third place",
       "team1": "France",
-      "team2": "Loser of Match 102"
+      "team2": "England",
+      "score": {
+        "ft": [
+          4,
+          6
+        ]
+      }
     },
     {
       "num": 104,
@@ -82,7 +106,29 @@
       "time": "15:00 UTC-4",
       "round": "Final",
       "team1": "Spain",
-      "team2": "Winner of Match 102"
+      "team2": "Argentina",
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
+      "goals1": [
+        {
+          "name": "Ferran Torres",
+          "minute": "106"
+        }
+      ],
+      "goals2": []
     }
-  ]
+  ],
+  "tournament_status": {
+    "completed": true,
+    "champion": "Spain",
+    "runner_up": "Argentina",
+    "third_place": "England",
+    "fourth_place": "France",
+    "final_score": "Spain 1-0 Argentina",
+    "completed_at": "2026-07-19"
+  }
 }

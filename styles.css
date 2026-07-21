@@ -585,3 +585,77 @@ table .team-label.spain-team {
 
 /* V1.3.6 — no generic RTVE search fallback.
    The app only shows RTVE summary buttons when videos-rtve.json contains a direct usable link. */
+
+
+/* V1.4.0 — tournament completed / champion presentation */
+.champion-banner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 18px 20px;
+  border: 1px solid rgba(245, 200, 76, 0.55);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(245, 200, 76, 0.30), transparent 42%),
+    linear-gradient(135deg, #073f2b 0%, #075c3a 58%, #0b7145 100%);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(3, 63, 42, 0.20);
+}
+
+.champion-crown {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.13);
+  font-size: 2rem;
+}
+
+.champion-copy .eyebrow {
+  color: #f5c84c;
+  margin-bottom: 4px;
+}
+
+.champion-copy h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.9rem);
+  color: #fff;
+}
+
+.champion-copy p:last-child {
+  margin: 5px 0 0;
+  color: rgba(255,255,255,0.82);
+  font-weight: 700;
+}
+
+.champion-stars {
+  color: #f5c84c;
+  font-size: 1.45rem;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .champion-banner {
+    grid-template-columns: auto 1fr;
+    padding: 15px;
+    gap: 12px;
+    border-radius: 20px;
+  }
+
+  .champion-crown {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    font-size: 1.6rem;
+  }
+
+  .champion-stars {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: -2px;
+  }
+}

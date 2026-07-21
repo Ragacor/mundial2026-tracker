@@ -666,7 +666,8 @@ function renderAll() {
 }
 
 function setupEvents() {
-  state.selectedDate = todayMadridISO();
+  const today = todayMadridISO();
+  state.selectedDate = today > '2026-07-19' ? '2026-07-19' : today;
   els.datePicker.value = state.selectedDate;
 
   els.datePicker.addEventListener('change', () => {
@@ -676,7 +677,7 @@ function setupEvents() {
   els.prevDay.addEventListener('click', () => changeDay(-1));
   els.nextDay.addEventListener('click', () => changeDay(1));
   els.todayBtn.addEventListener('click', () => {
-    state.selectedDate = todayMadridISO();
+    state.selectedDate = '2026-07-19';
     els.datePicker.value = state.selectedDate;
     renderDaily();
   });

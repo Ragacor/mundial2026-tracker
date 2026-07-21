@@ -1,12 +1,12 @@
 {
-  "version": "1.7",
-  "updated_at": "2026-07-15",
+  "version": "2.0",
+  "updated_at": "2026-07-21",
   "country": "España",
   "notes": [
-    "V1.3.10: actualización a 15 de julio de 2026.",
-    "Francia 0-2 España: España clasificada para la final.",
-    "Semifinal Inglaterra - Argentina: miércoles 15 de julio a las 21:00, La 1 · RTVE Play · DAZN.",
-    "Final: España vs ganador de Inglaterra - Argentina, domingo 19 de julio a las 21:00, La 1 · RTVE Play · DAZN."
+    "V1.4.0: Mundial 2026 finalizado.",
+    "España campeona tras vencer 1-0 a Argentina.",
+    "La final fue emitida por La 1, RTVE Play y DAZN.",
+    "La información de televisión se conserva como archivo histórico del torneo."
   ],
   "default": {
     "channels": [
@@ -814,5 +814,6 @@
       "label": "DAZN",
       "note": "Cuartos de final. DAZN confirmado; RTVE no lo incluye entre los cuartos anunciados para La 1 / RTVE Play en su actualización del 8 de julio."
     }
-  ]
+  ],
+  "tournament_completed": true
 }

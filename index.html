@@ -18,7 +18,7 @@
         <div>
       <p class="eyebrow">FIFA World Cup 2026</p>
       <h1>Mundial 2026</h1>
-      <p class="subtitle">Partidos, resultados y grupos en horario español.</p>
+      <p class="subtitle">Archivo completo: calendario, resultados, goleadores, cruces y resúmenes.</p>
         </div>
       </div>
     </div>
@@ -29,6 +29,16 @@
   </header>
 
   <main class="app-shell">
+
+    <section class="champion-banner" aria-label="Campeón del Mundial 2026">
+      <div class="champion-crown" aria-hidden="true">🏆</div>
+      <div class="champion-copy">
+        <p class="eyebrow">Mundial 2026 finalizado</p>
+        <h2>🇪🇸 España, campeona del mundo</h2>
+        <p>España 1-0 Argentina · Final disputada el 19 de julio de 2026</p>
+      </div>
+      <div class="champion-stars" aria-label="Segundo título mundial de España">★★</div>
+    </section>
     <section class="match-hub">
       <div class="day-bar" aria-label="Selector de día">
         <button id="prevDay" type="button" aria-label="Día anterior">←</button>
@@ -37,7 +47,7 @@
           <input type="date" id="datePicker" />
         </label>
         <button id="nextDay" type="button" aria-label="Día siguiente">→</button>
-        <button id="todayBtn" class="today-chip" type="button">Hoy</button>
+        <button id="todayBtn" class="today-chip" type="button">Final</button>
       </div>
 
       <div class="today-summary">
@@ -54,7 +64,7 @@
       <div id="dailyMatches" class="cards priority-cards"></div>
 
       <nav class="tabs" aria-label="Secciones">
-        <button class="tab active" data-tab="daily" type="button">Hoy</button>
+        <button class="tab active" data-tab="daily" type="button">Final</button>
         <button class="tab" data-tab="groups" type="button">Grupos</button>
         <button class="tab" data-tab="results" type="button">Resultados</button>
         <button class="tab" data-tab="scorers" type="button">Goleadores</button>

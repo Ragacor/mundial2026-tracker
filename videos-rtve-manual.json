@@ -1,12 +1,60 @@
 {
-  "version": "1.1",
-  "updated_at": "2026-07-15",
+  "version": "2.0",
+  "updated_at": "2026-07-21",
   "videos": [
+    {
+      "team1": "Argentina",
+      "team2": "Switzerland",
+      "title": "Argentina - Suiza: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/argentina-suiza-resumen-partido-mundial-2026/17153371/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
+    {
+      "team1": "England",
+      "team2": "Argentina",
+      "title": "Inglaterra - Argentina: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/inglaterra-argentina-resumen-partido-mundial-2026/17153361/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
+    {
+      "team1": "France",
+      "team2": "England",
+      "title": "Francia - Inglaterra: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-inglaterra-resumen-partido-mundial-2026/17160813/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
     {
       "team1": "France",
       "team2": "Morocco",
       "title": "Francia - Marruecos: resumen, jugadas y goles del partido del Mundial 2026",
       "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-marruecos-resumen-partido-mundial-2026/17148929/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
+    {
+      "team1": "France",
+      "team2": "Spain",
+      "title": "Francia - España: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/francia-espana-resumen-partido-mundial-2026/17153354/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
+    {
+      "team1": "Norway",
+      "team2": "England",
+      "title": "Noruega - Inglaterra: resumen, jugadas y goles del partido del Mundial 2026",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/noruega-inglaterra-resumen-partido-mundial-2026/17148946/",
+      "source": "RTVE Play",
+      "status": "confirmed"
+    },
+    {
+      "team1": "Spain",
+      "team2": "Argentina",
+      "title": "Final: España - Argentina. Resumen",
+      "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/copa-mundial-fifa-final-espana-argentina-resumen/17163109/",
       "source": "RTVE Play",
       "status": "confirmed"
     },
@@ -17,14 +65,11 @@
       "url": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/espana-belgica-resumen-partido-mundial-2026/17148940/",
       "source": "RTVE Play",
       "status": "confirmed"
-    },
-    {
-      "team1": "France",
-      "team2": "Spain",
-      "title": "Francia - España: resumen en vídeo y resultado | Mundial 2026",
-      "url": "https://www.rtve.es/deportes/20260714/francia-espana-directo-video-resumen-resultado-mundial-2026/17155047.shtml",
-      "source": "RTVE",
-      "status": "confirmed"
     }
+  ],
+  "notes": [
+    "V1.4.0: enlaces directos verificados para todos los partidos desde cuartos hasta la final.",
+    "videos-rtve.json continúa aportando automáticamente otros resúmenes.",
+    "videos-rtve-manual.json tiene prioridad para impedir que se pierdan enlaces verificados."
   ]
 }
